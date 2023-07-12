@@ -24,7 +24,7 @@ function getFoundryConfig() {
 module.exports = (env, argv) => {
     let config = {
         context: __dirname,
-        entry: path.resolve(__dirname, "./src/index.js"),
+        entry: path.resolve(__dirname, "./src/module/fabulaultima.mjs"),
         module: {
             rules: [
                 {
@@ -40,7 +40,7 @@ module.exports = (env, argv) => {
             }),
             new CopyPlugin({
                 patterns: [
-                    { from: "module.json" },
+                    { from: "system.json" },
                 ]
             }),
         ],
