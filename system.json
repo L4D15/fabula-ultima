@@ -2,12 +2,23 @@
   "name": "fabulaultima",
   "title": "Fabula Ultima (Unofficial)",
   "description": "The Fabula Ultima system for FoundryVTT!",
-  "version": "0.1.0",
-  "minimumCoreVersion": "0.8.5",
-  "compatibleCoreVersion": "0.8.6",
-  "author": "KzMz",
-  "esmodules": ["module/fabulaultima.mjs"],
-  "styles": ["css/fabulaultima.css"],
+  "version": "0.8.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11",
+    "maximum": "11" 
+  },
+  "authors": [
+    {
+      "name": "KzMz"
+    },
+    {
+      "name": "L4D15",
+      "discord": "Ladis_d20"
+    }
+  ],
+  "esmodules": ["fabulaultima.bundle.mjs"],
+  "styles": ["fabulaultima.css"],
   "scripts": [],
   "packs": [],
   "languages": [

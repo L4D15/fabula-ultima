@@ -10,6 +10,8 @@ import { FABULAULTIMA } from "./helpers/config.mjs";
 import { FabulaUltimaCombatHud } from "./helpers/combat.js";
 import { FabulaUltimaGroupRoll } from "./helpers/groupRoll/groupRoll.mjs";
 
+import '../styles/fabulaultima.scss';
+
 /* -------------------------------------------- */
 /*  Init Hook                                   */
 /* -------------------------------------------- */

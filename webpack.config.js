@@ -29,24 +29,28 @@ module.exports = (env, argv) => {
             rules: [
                 {
                     test: /\.(c|sa|sc)ss$/,
-                    use: [{ loader: MiniCssExtractPlugin.loader }, 'css-loader', 'sass-loader']
-                }
+                    use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader" ],
+                },
             ],
         },
         plugins: [
             new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
             new MiniCssExtractPlugin({
-                filename: "fabula-ultima.css"
+                filename: "fabulaultima.css"
             }),
             new CopyPlugin({
                 patterns: [
                     { from: "system.json" },
+                    { from: "template.json" },
+                    { from: "lang", to: "lang" },
+                    { from: "src/templates", to: "templates" },
+                    { from: "src/styles", to: "styles" },
                 ]
             }),
         ],
         output: {
-            filename: "fabula-ultima.bundle.js",
-            path: path.resolve(__dirname, "dist/fabula-ultima"),
+            filename: "fabulaultima.bundle.mjs",
+            path: path.resolve(__dirname, "dist/fabulaultima"),
         },
     };
 
@@ -59,7 +63,7 @@ module.exports = (env, argv) => {
         console.log(`Dev build detected.`);
 
         if (foundryConfig !== undefined) {
-            config.output.path = path.join(foundryConfig.data_folder, 'modules', 'fabula-ultima');
+            config.output.path = path.join(foundryConfig.data_folder, 'systems', 'fabulaultima');
         }
 
         //config.devtool = "inline-source-map";
