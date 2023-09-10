@@ -251,20 +251,20 @@ export class FabulaUltimaActor extends Actor {
   }
 
   getWeaponFormula(item) {
-    let weaponBonus = item.data.precisionBonus;
-    const isMelee = item.data.type === "melee";
+    let weaponBonus = item.system.precisionBonus;
+    const isMelee = item.system.type === "melee";
 
     const features = this.items.filter(i => i.type === "feature");
     for (const feature of features) {
-      const bonus = Number(isMelee ? feature.data.data.passive.meleePrecisionBonus : feature.data.data.passive.rangedPrecisionBonus);
-      const level = Number(feature.data.data.level);
+      const bonus = Number(isMelee ? feature.system.passive.meleePrecisionBonus : feature.system.passive.rangedPrecisionBonus);
+      const level = Number(feature.system.level);
       if (isNaN(bonus) || isNaN(level)) continue;
       if (!this.checkFeatureCondition(feature)) continue;
 
       weaponBonus += (bonus * level);
     }
 
-    let base = "【" + item.data.firstAbility.toUpperCase() + " + " + item.data.secondAbility.toUpperCase() + "】"; 
+    let base = "【" + item.system.firstAbility.toUpperCase() + " + " + item.system.secondAbility.toUpperCase() + "】"; 
     if (weaponBonus !== 0) {
       base += " + " + weaponBonus;
     }

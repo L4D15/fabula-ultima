@@ -1,4 +1,5 @@
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
+import { Localization } from "../helpers/localization.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -206,29 +207,33 @@ export class FabulaUltimaActorSheet extends ActorSheet {
       i.img = i.img || DEFAULT_TOKEN;
       // Append to gear.
       if (i.type === 'weapon') {
-        i.formula = this.actor.getItemFormula(i);
- 
-        i.data.category = game.i18n.localize(CONFIG.FABULAULTIMA.weaponCategories[i.data.category]);
-        i.data.type = game.i18n.localize(CONFIG.FABULAULTIMA.weaponTypes[i.data.type]);
-        i.data.damage.type = game.i18n.localize(CONFIG.FABULAULTIMA.damageTypes[i.data.damage.type]);
+        i.system.formula = this.actor.getItemFormula(i);
+        i.system.categoryLabel = Localization.weapons.getCategory(i.system.category);
+        i.system.typeLabel = Localization.weapons.getType(i.system.type);
+        i.system.damage.typeLabel = Localization.weapons.getDamageType(i.system.damage.type);
 
-        if (i.data.twoHanded) {
-          if (context.system.equipped.mainHand === i._id) {
-            i.status = game.i18n.localize("FABULAULTIMA.EquipTwoHanded");
+        let isTwoHanded = i.system.twoHanded;
+        let isEquippedInMainHand = context.system.equipped.mainHand === i._id;
+        let isEquippedInOffHand = context.system.equipped.offHand === i._id;
+
+        if (isTwoHanded) {
+          if (isEquippedInMainHand) {
+            i.statusLabel = Localization.weapons.getTwoHandsEquippedStatus();
+
+            // Force the off-hand is also grabbing the two-handed weapon
             context.system.equipped.offHand = context.system.equipped.mainHand;
           } else {
-            i.status = "";
+            i.statusLabel = Localization.weapons.getNotEquippedStatus();
           }
         } else {
-          if (context.system.equipped.mainHand === i._id) {
-            i.status = game.i18n.localize("FABULAULTIMA.MainHand");
-          } else if (context.system.equipped.offHand === i._id) {
-            i.status = game.i18n.localize("FABULAULTIMA.OffHand");
+          if (isEquippedInMainHand) {
+            i.statusLabel = Localization.weapons.getMainHandEquippedStatus();
+          } else if (isEquippedInOffHand) {
+            i.statusLabel = Localization.weapons.getOffHandEquippedStatus();
           } else {
-            i.status = "";
+            i.statusLabel = Localization.weapons.getNotEquippedStatus();
           }
         }
-
         weapons.push(i);
       }
       else if (i.type === "shield") {
@@ -283,7 +288,7 @@ export class FabulaUltimaActorSheet extends ActorSheet {
     for (let i of context.items) {
       i.img = i.img || DEFAULT_TOKEN;
       if (i.type === 'feature') { 
-        i.data.cost.resource = game.i18n.localize(CONFIG.FABULAULTIMA.costResources[i.data.cost.resource]);
+        i.system.cost.resource = game.i18n.localize(CONFIG.FABULAULTIMA.costResources[i.system.cost.resource]);
 
         const cls = i.data.class;
         const c = classes.find(cl => cl.data.abbr === cls);
@@ -293,7 +298,7 @@ export class FabulaUltimaActorSheet extends ActorSheet {
       }
       // Append to spells.
       else if (i.type === 'spell') {
-        i.data.cost.resource = game.i18n.localize(CONFIG.FABULAULTIMA.costResources[i.data.cost.resource]);
+        i.system.resource = game.i18n.localize(CONFIG.FABULAULTIMA.costResources[i.system.cost.resource]);
 
         const cls = i.data.class;
         const c = classes.find(cl => cl.data.abbr === cls);
