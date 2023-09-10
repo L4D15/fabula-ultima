@@ -51,7 +51,7 @@ export class FabulaUltimaGroupRollRoller extends Application {
 
     _tagMessage(candidate, data, options) {
         let update = {flags: {grouproll: {"message": this.data.message, "data": this.data.attach}}};
-        candidate.data.update(update);
+        candidate.update(update);
     }
 
     async _onGroupRoll(evt) {
@@ -63,7 +63,7 @@ export class FabulaUltimaGroupRollRoller extends Application {
                 if (actor.id === game.user.character.id)
                     continue;
 
-                const messageList = game.messages.filter(i => i.roll && ((i.data.speaker.actor === actor.id) || (i.data.speaker.alias === actor.name)) && (Date.now() - i.data.timestamp) < 2 * 60000);
+                const messageList = game.messages.filter(i => i.roll && ((i.system.speaker.actor === actor.id) || (i.system.speaker.alias === actor.name)) && (Date.now() - i.system.timestamp) < 2 * 60000);
 
                 const last = messageList.length - 1;
                 if (messageList[last] && messageList[last].roll && messageList[last].roll.total >= 10) {

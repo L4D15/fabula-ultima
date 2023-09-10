@@ -17,7 +17,7 @@
   
       {{!-- Description Tab --}}
       <div class="tab" data-group="primary" data-tab="description">
-        {{editor content=data.description target="data.description" rollData=rollData button=true owner=owner editable=editable}}
+        {{editor description target="description" rollData=rollData button=true owner=owner editable=editable}}
       </div>
   
       {{!-- Attributes Tab --}}
@@ -25,57 +25,57 @@
       <div class="tab attributes" data-group="primary" data-tab="attributes">
         {{!-- As you add new fields, add them in here! --}}
         <div class="resource-content flexrow flex-center flex-between">
-            <label for="data.defenseFormula" class="resource-label long">{{localize "FABULAULTIMA.DefenseFormula"}}</label>
-            <input type="text" name="data.defenseFormula" value="{{data.defenseFormula}}" data-dtype="String"/>
+            <label for="system.defenseFormula" class="resource-label long">{{localize "FABULAULTIMA.DefenseFormula"}}</label>
+            <input type="text" name="system.defenseFormula" value="{{system.defenseFormula}}" data-dtype="String"/>
   
-            <label for="data.magicDefenseFormula" class="resource-label long">{{localize "FABULAULTIMA.MagicDefenseFormula"}}</label>
-            <input type="text" name="data.magicDefenseFormula" value="{{data.magicDefenseFormula}}" data-dtype="String"/>
+            <label for="system.magicDefenseFormula" class="resource-label long">{{localize "FABULAULTIMA.MagicDefenseFormula"}}</label>
+            <input type="text" name="system.magicDefenseFormula" value="{{system.magicDefenseFormula}}" data-dtype="String"/>
     
-            <label for="data.initiativeBonus" class="resource-label long">{{localize "FABULAULTIMA.InitiativeBonus"}}</label>
-            <input type="text" name="data.initiativeBonus" value="{{data.initiativeBonus}}" data-dtype="Number"/>
+            <label for="system.initiativeBonus" class="resource-label long">{{localize "FABULAULTIMA.InitiativeBonus"}}</label>
+            <input type="text" name="system.initiativeBonus" value="{{system.initiativeBonus}}" data-dtype="Number"/>
         </div>
 
         <div class="resource-content flexrow flex-center flex-between">
-            <label for="data.isMartial" class="resource-label long">{{localize "FABULAULTIMA.IsMartial"}}</label>
-            {{#if data.isMartial}}
-              <input type="checkbox" checked="checked" name="data.isMartial" data-dtype="Boolean"/>
+            <label for="system.isMartial" class="resource-label long">{{localize "FABULAULTIMA.IsMartial"}}</label>
+            {{#if system.isMartial}}
+              <input type="checkbox" checked="checked" name="system.isMartial" data-dtype="Boolean"/>
             {{else}}
-              <input type="checkbox" name="data.isMartial" data-dtype="Boolean"/>
+              <input type="checkbox" name="system.isMartial" data-dtype="Boolean"/>
             {{/if}}
         </div>
 
         <br>
         <span class="resource-label">{{localize "FABULAULTIMA.Quality"}}</span>
         <div class="resource-content flexrow flex-center flex-between">
-            {{editor content=data.quality.description target="data.quality.description" rollData=rollData button=true owner=owner editable=editable}}
+            {{editor system.quality.description target="system.quality.description" rollData=rollData button=true owner=owner editable=editable}}
         </div>
         
         <div class="resource-content flexrow flex-center flex-between">
-            <label for="data.quality.overrideDamageType" class="resource-label long">{{localize "FABULAULTIMA.DamageType"}}</label>
-            <select name="data.quality.overrideDamageType">
-                {{#each data.damageTypes as |damageType key|}}
-                {{option key (localize damageType) ../data.damage.type}}
+            <label for="system.quality.overrideDamageType" class="resource-label long">{{localize "FABULAULTIMA.DamageType"}}</label>
+            <select name="system.quality.overrideDamageType">
+                {{#each system.damageTypes as |damageType key|}}
+                {{option key (localize damageType) ../system.damage.type}}
                 {{/each}}
             </select>
         </div>
         
         <div class="resource-content flexrow flex-center flex-between">
-            <label for="data.quality.initiativeBonus" class="resource-label long">{{localize "FABULAULTIMA.InitiativeBonus"}}</label>
-            <input type="text" name="data.quality.initiativeBonus" value="{{data.quality.initiativeBonus}}" data-dtype="Number"/>
+            <label for="system.quality.initiativeBonus" class="resource-label long">{{localize "FABULAULTIMA.InitiativeBonus"}}</label>
+            <input type="text" name="system.quality.initiativeBonus" value="{{system.quality.initiativeBonus}}" data-dtype="Number"/>
         
-            <label for="data.quality.precisionBonus" class="resource-label long">{{localize "FABULAULTIMA.PrecisionBonus"}}</label>
-            <input type="text" name="data.quality.precisionBonus" value="{{data.quality.precisionBonus}}" data-dtype="Number"/>
+            <label for="system.quality.precisionBonus" class="resource-label long">{{localize "FABULAULTIMA.PrecisionBonus"}}</label>
+            <input type="text" name="system.quality.precisionBonus" value="{{system.quality.precisionBonus}}" data-dtype="Number"/>
         
-            <label for="data.quality.defenseBonus" class="resource-label long">{{localize "FABULAULTIMA.DefenseBonus"}}</label>
-            <input type="text" name="data.quality.defenseBonus" value="{{data.quality.defenseBonus}}" data-dtype="Number"/>
+            <label for="system.quality.defenseBonus" class="resource-label long">{{localize "FABULAULTIMA.DefenseBonus"}}</label>
+            <input type="text" name="system.quality.defenseBonus" value="{{system.quality.defenseBonus}}" data-dtype="Number"/>
         
-            <label for="data.quality.magicDefenseBonus" class="resource-label long">{{localize "FABULAULTIMA.MagicDefenseBonus"}}</label>
-            <input type="text" name="data.quality.magicDefenseBonus" value="{{data.quality.magicDefenseBonus}}" data-dtype="Number"/>
+            <label for="system.quality.magicDefenseBonus" class="resource-label long">{{localize "FABULAULTIMA.MagicDefenseBonus"}}</label>
+            <input type="text" name="system.quality.magicDefenseBonus" value="{{system.quality.magicDefenseBonus}}" data-dtype="Number"/>
         </div>
 
         <div class="resource-content flexrow flex-center flex-between">
-          <label for="data.zenit" class="resource-label long">{{localize "FABULAULTIMA.Price"}}</label>
-          <input type="text" name="data.zenit" value="{{data.zenit}}" data-dtype="Number"/>
+          <label for="system.zenit" class="resource-label long">{{localize "FABULAULTIMA.Price"}}</label>
+          <input type="text" name="system.zenit" value="{{system.zenit}}" data-dtype="Number"/>
         </div>
       </div>
     </section>

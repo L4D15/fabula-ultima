@@ -48,8 +48,8 @@
         </div>
         <h4>{{shield.name}}</h4>
       </div>
-      <div class="item-defense item-prop">{{shield.data.defenseBonus}}</div>
-      <div class="item-magicDefense item-prop">{{shield.data.magicDefenseBonus}}</div>
+      <div class="item-defense item-prop">{{shield.system.defenseBonus}}</div>
+      <div class="item-magicDefense item-prop">{{shield.system.magicDefenseBonus}}</div>
       <div clasS="item-status item-prop">{{shield.status}}</div>
       <div class="item-controls">
         <a class="item-control item-equipMain" title="{{localize "FABULAULTIMA.MainHand"}}"><i class="fas fa-edit"></i></a>
@@ -78,9 +78,9 @@
         </div>
         <h4>{{arm.name}}</h4>
       </div>
-      <div class="item-defense item-prop">{{arm.data.defenseFormula}}</div>
-      <div class="item-magicDefense item-prop">{{arm.data.magicDefenseFormula}}</div>
-      <div class="item-initiative item-prop">{{arm.data.initiativeBonus}}</div>
+      <div class="item-defense item-prop">{{arm.system.defenseFormula}}</div>
+      <div class="item-magicDefense item-prop">{{arm.system.magicDefenseFormula}}</div>
+      <div class="item-initiative item-prop">{{arm.system.initiativeBonus}}</div>
       <div clasS="item-status item-prop">{{arm.status}}</div>
       <div class="item-controls">
         <a class="item-control item-equipArmor" title="{{localize "FABULAULTIMA.Equip"}}"><i class="fas fa-edit"></i></a>
@@ -131,8 +131,8 @@
         </div>
         <h4>{{o.name}}</h4>
       </div>
-      <div class="item-description item-prop">{{{o.data.description}}}</div>
-      <div clasS="item-status item-prop">{{o.data.formula}}</div>
+      <div class="item-description item-prop">{{{o.system.description}}}</div>
+      <div clasS="item-status item-prop">{{o.system.formula}}</div>
       <div class="item-controls">
         <a class="item-control item-delete" title="{{localize "FABULAULTIMA.Delete"}}"><i class="fas fa-trash"></i></a>
       </div>
