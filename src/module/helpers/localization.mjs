@@ -1,5 +1,18 @@
 
 export const Localization = {
+    items: {
+        getEquipped: () => {
+            let key = "FABULAULTIMA.Equipped";
+            let text = game.i18n.localize(key);
+
+            return text;
+        },
+
+        getNotEquipped: () => {
+            return "";
+        },
+    },
+
     weapons: {
         getCategory: (category) => {
             let key = category;
@@ -46,6 +59,30 @@ export const Localization = {
         },
 
         getNotEquippedStatus: () => {
+            return "";
+        },
+    },
+    armor: {
+        getEquipped: () => {
+            let key = "FABULAULTIMA.Equipped";
+            let text = game.i18n.localize(key);
+
+            return text;
+        },
+
+        getNotEquipped: () => {
+            return "";
+        },
+    },
+    accessories: {
+        getEquipped: () => {
+            let key = "FABULAULTIMA.Equipped";
+            let text = game.i18n.localize(key);
+
+            return text;
+        },
+
+        getNotEquipped: () => {
             return "";
         },
     }

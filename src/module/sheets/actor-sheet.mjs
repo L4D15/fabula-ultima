@@ -205,6 +205,34 @@ export class FabulaUltimaActorSheet extends ActorSheet {
     // Iterate through items, allocating to containers
     for (let i of context.items) {
       i.img = i.img || DEFAULT_TOKEN;
+
+      let isTwoHanded = i.system.twoHanded;
+      let isEquippedInMainHand  =   context.system.equipped.mainHand === i._id;
+      let isEquippedInOffHand   =   context.system.equipped.offHand === i._id;
+      let isEquippedInArmor     =   context.system.equipped.armor === i._id;
+      let isEquippedInAccesory  =   context.system.equipped.accesory === i._id ||
+                                    context.system.equipped.accessory2 === i._id;
+
+      if (isTwoHanded) {
+          if (isEquippedInMainHand || isEquippedInOffHand) {
+              // Force both hands to grab the two-handed weapon
+              context.system.equipped.mainHand = i._id;
+              context.system.equipped.offHand = i._id;
+
+            i.statusLabel = Localization.weapons.getTwoHandsEquippedStatus();
+          } else {
+              i.statusLabel = Localization.weapons.getNotEquippedStatus();
+          }
+      } else {
+          if (isEquippedInMainHand) {
+              i.statusLabel = Localization.weapons.getMainHandEquippedStatus();
+          } else if (isEquippedInOffHand) {
+              i.statusLabel = Localization.weapons.getOffHandEquippedStatus();
+          } else {
+              i.statusLabel = Localization.weapons.getNotEquippedStatus();
+          }
+      }
+
       // Append to gear.
       if (i.type === 'weapon') {
         i.system.formula = this.actor.getItemFormula(i);
@@ -212,58 +240,28 @@ export class FabulaUltimaActorSheet extends ActorSheet {
         i.system.typeLabel = Localization.weapons.getType(i.system.type);
         i.system.damage.typeLabel = Localization.weapons.getDamageType(i.system.damage.type);
 
-        let isTwoHanded = i.system.twoHanded;
-        let isEquippedInMainHand = context.system.equipped.mainHand === i._id;
-        let isEquippedInOffHand = context.system.equipped.offHand === i._id;
-
-        if (isTwoHanded) {
-          if (isEquippedInMainHand) {
-            i.statusLabel = Localization.weapons.getTwoHandsEquippedStatus();
-
-            // Force the off-hand is also grabbing the two-handed weapon
-            context.system.equipped.offHand = context.system.equipped.mainHand;
-          } else {
-            i.statusLabel = Localization.weapons.getNotEquippedStatus();
-          }
-        } else {
-          if (isEquippedInMainHand) {
-            i.statusLabel = Localization.weapons.getMainHandEquippedStatus();
-          } else if (isEquippedInOffHand) {
-            i.statusLabel = Localization.weapons.getOffHandEquippedStatus();
-          } else {
-            i.statusLabel = Localization.weapons.getNotEquippedStatus();
-          }
-        }
         weapons.push(i);
       }
       else if (i.type === "shield") {
-        if (context.system.equipped.mainHand === i._id) {
-          i.status = game.i18n.localize("FABULAULTIMA.MainHand");
-        } else if (context.system.equipped.offHand === i._id) {
-          i.status = game.i18n.localize("FABULAULTIMA.OffHand");
-        } else {
-          i.status = "";
-        }
-
         shields.push(i);
       }
       else if (i.type === "armor") {
-        i.data.defenseFormula = this.actor.getArmorFormula(i, false);
-        i.data.magicDefenseFormula = this.actor.getArmorFormula(i, true);
+        i.system.defenseFormula = this.actor.getArmorFormula(i, false);
+        i.system.magicDefenseFormula = this.actor.getArmorFormula(i, true);
 
-        if (context.system.equipped.armor === i._id) {
-          i.status = game.i18n.localize("FABULAULTIMA.Equipped");
+        if (isEquippedInArmor) {
+          i.system.statusLabel = Localization.armor.getEquipped();
         } else {
-          i.status = "";
+          i.status = Localization.armor.getNotEquipped();
         }
 
         armor.push(i);
       }
       else if (i.type === "accessory") {
-        if (context.system.equipped.accessory === i._id || context.system.equipped.accessory2 === i._id) {
-          i.status = game.i18n.localize("FABULAULTIMA.Equipped");
+        if (isEquippedInAccesory) {
+          i.status = Localization.accessories.getEquipped();
         } else {
-          i.status = "";
+          i.status = Localization.accessories.getNotEquipped();
         }
 
         accessories.push(i);
