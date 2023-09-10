@@ -22,7 +22,7 @@ export class FabulaUltimaItemSheet extends ItemSheet {
 
     // Alternatively, you could use the following return statement to do a
     // unique item sheet by type, like `weapon-sheet.html`.
-    return `${path}/item-${this.item.data.type}-sheet.html`;
+    return `${path}/item-${this.item.type}-sheet.html`;
   }
 
   /* -------------------------------------------- */
@@ -33,7 +33,7 @@ export class FabulaUltimaItemSheet extends ItemSheet {
     let context = super.getData();
 
     // Use a safe clone of the item data for further operations.
-    const itemData = context.item.data;
+    const itemData = context.item;
 
     // Retrieve the roll data for TinyMCE editors.
     context.rollData = {};
@@ -43,7 +43,7 @@ export class FabulaUltimaItemSheet extends ItemSheet {
     }
 
     // Add the actor's data to context.data for easier access, as well as flags.
-    context.data = itemData.data;
+    context.system = itemData.system;
     context.flags = itemData.flags;
 
     if (context.item.type === "feature") {
@@ -56,19 +56,19 @@ export class FabulaUltimaItemSheet extends ItemSheet {
   }
 
   getFeatureData(context) {
-    context.data.classes = game.items.filter(item => item.type === "class");
-    context.data.costResources = CONFIG.FABULAULTIMA.costResources;
-    context.data.timings = CONFIG.FABULAULTIMA.timings;
-    context.data.actionTypes = CONFIG.FABULAULTIMA.actionTypes;
+    context.classes = game.items.filter(item => item.type === "class");
+    context.costResources = CONFIG.FABULAULTIMA.costResources;
+    context.timings = CONFIG.FABULAULTIMA.timings;
+    context.actionTypes = CONFIG.FABULAULTIMA.actionTypes;
 
     return context;
   }
 
   getWeaponData(context) {
-    context.data.abilities = CONFIG.FABULAULTIMA.abilities;
-    context.data.weaponCategories = CONFIG.FABULAULTIMA.weaponCategories;
-    context.data.weaponTypes = CONFIG.FABULAULTIMA.weaponTypes;
-    context.data.damageTypes = CONFIG.FABULAULTIMA.damageTypes;
+    context.abilities = CONFIG.FABULAULTIMA.abilities;
+    context.weaponCategories = CONFIG.FABULAULTIMA.weaponCategories;
+    context.weaponTypes = CONFIG.FABULAULTIMA.weaponTypes;
+    context.damageTypes = CONFIG.FABULAULTIMA.damageTypes;
 
     return context;
   }
@@ -89,7 +89,7 @@ export class FabulaUltimaItemSheet extends ItemSheet {
   _activateFeatureListeners(html, context) {
     if (context.item.type === "feature") {
       html.find('#class-select').on('change', function () {
-        context.item.data.class = $('#class-select').val();
+        context.item.system.class = $('#class-select').val();
       });
     } else if (context.item.type === "weapon") {
       /*html.find('#first-ability').on('change', function () {

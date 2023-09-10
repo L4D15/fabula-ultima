@@ -17,17 +17,17 @@
     <section class="sheet-body">
         {{!-- Description Tab --}}
         <div class="tab" data-group="primary" data-tab="description">
-            <label for="data.abbr" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.ClassAbbr"}}</label>
-            <input type="text" name="data.abbr" value="{{data.abbr}}" data-dtype="String"/>
+            <label for="system.abbr" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.ClassAbbr"}}</label>
+            <input type="text" name="system.abbr" value="{{system.abbr}}" data-dtype="String"/>
 
-            <label for="data.healthBonus" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.HealthBonus"}}</label>
-            <input type="text" name="data.healthBonus" value="{{data.healthBonus}}" data-dtype="String"/>
-            <label for="data.mindBonus" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.MindBonus"}}</label>
-            <input type="text" name="data.mindBonus" value="{{data.mindBonus}}" data-dtype="String"/>
-            <label for="data.inventoryBonus" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.InventoryBonus"}}</label>
-            <input type="text" name="data.inventoryBonus" value="{{data.inventoryBonus}}" data-dtype="String"/>
+            <label for="system.healthBonus" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.HealthBonus"}}</label>
+            <input type="text" name="system.healthBonus" value="{{system.healthBonus}}" data-dtype="String"/>
+            <label for="system.mindBonus" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.MindBonus"}}</label>
+            <input type="text" name="system.mindBonus" value="{{system.mindBonus}}" data-dtype="String"/>
+            <label for="system.inventoryBonus" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.InventoryBonus"}}</label>
+            <input type="text" name="system.inventoryBonus" value="{{system.inventoryBonus}}" data-dtype="String"/>
 
-            {{editor content=data.description target="data.description" rollData=rollData button=true owner=owner editable=editable}}
+            {{editor system.description target="system.description" rollData=rollData button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>
