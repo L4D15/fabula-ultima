@@ -80,7 +80,7 @@
   "FABULAULTIMA.None": "None",
 
   "FABULAULTIMA.Timing": "Timing",
-  "FABULAULTIMA.Action": "ACtion",
+  "FABULAULTIMA.Action": "Action",
   "FABULAULTIMA.Reaction": "Reaction",
   "FABULAULTIMA.Free": "Free",
   "FABULAULTIMA.BeforeConflict": "Before conflict",
@@ -212,5 +212,11 @@
   "FABULAULTIMA.Limits": "Limits",
   "FABULAULTIMA.LimitEffect": "Effect",
   "FABULAULTIMA.Partner": "Partner",
-  "FABULAULTIMA.Attributes": "Attributes"
+  "FABULAULTIMA.Attributes": "Attributes",
+  "FABULAULTIMA.RerollWithFabulaPoint": "Reroll with Fabula Point",
+  "FABULAULTIMA.FreeAttackWithMain": "Free Attack",
+  "FABULAULTIMA.FreeAttackWithOff": "Free Attack with Off-hand",
+  "FABULAULTIMA.RollFeature": "Roll feature",
+  "FABULAULTIMA.AdditionalFormula": "Additional Formula",
+  "FABULAULTIMA.DamageTypeTurnOverride": "Override damage type"
 }
