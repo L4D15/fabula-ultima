@@ -24,7 +24,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "fs-extra": "^10.1.0",
     "mini-css-extract-plugin": "^2.6.1",
-    "node-sass": "^9.0.0",
+    "sass": "^1.49.9",
     "sass-loader": "^13.0.2"
   }
 }
