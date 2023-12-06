@@ -1,7 +1,5 @@
 $border: 2px groove #eeede0;
 $main-font: "Signika", serif;
-$progress-bar-border: 1px solid #000;
-$progress-bar-background: rgba(0,0,0,0.1);
 $input-focus-border: 1px solid #000;
 $input-focus-background: rgba(0,0,0,0.1);
 
@@ -10,7 +8,7 @@ $input-focus-background: rgba(0,0,0,0.1);
 }
 
 input.borderless {
-    border: none;
+    border: 1px solid rgba(0,0,0,0);
     background: none;
 }
 
@@ -19,25 +17,6 @@ input.borderless:hover {
     border: $input-focus-border;
     background: $input-focus-background;
     box-shadow: none;
-}
-
-progress[value] {
-  -webkit-appearance:none;
-  -moz-appearance:none;        
-  appearance: none;
-  flex: auto;
-}
-
-progress::-webkit-progress-bar {
-    flex: auto;
-    border: $progress-bar-border;
-    background-color: $progress-bar-background;
-    border-radius: 3px;
-    height: 8px;
-}
-
-progress::-webkit-progress-value {
-    background-color: #5b5398;
 }
 
 .justified-content {
@@ -179,5 +158,24 @@ progress::-webkit-progress-value {
             font-weight: 900;
             font-size: 1.2rem;
         }
+
+        .final-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+    }
+}
+
+#resources {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+
+    section:first-child {
+        margin-right: 0.5rem;
+    }
+
+    section:last-child {
+        margin-left: 0.5rem;
     }
 }

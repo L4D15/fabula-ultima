@@ -1,0 +1,12 @@
+<div class="progress-bar">
+    <div class="values">
+        <label for="value">{{ label }}</label>
+        <div class="value-range">
+            <input name="{{valuePath}}" type="text" value="{{ value }}" data-dtype="Number" max="{{ max }}" class="borderless"/>
+            <span class="max-value">/{{max}}</span>
+        </div>
+    </div>
+    <div class="bar">
+        <progress value="{{ value }}" max="{{ max }}">{{ value }}</progress>
+    </div>
+</div>

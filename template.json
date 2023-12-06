@@ -99,7 +99,11 @@
       "peculiarity": "",
       "limitCondition": "",
       "zenit": 0,
-      "exp": 0
+      "xp": {
+        "value": 0,
+        "min": 0,
+        "max": 10
+      }
     },
     "npc": {
       "templates": ["base"],

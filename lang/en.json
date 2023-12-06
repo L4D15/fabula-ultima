@@ -149,6 +149,7 @@
   "FABULAULTIMA.Features": "Features",
   "FABULAULTIMA.Name": "Name",
   "FABULAULTIMA.Level": "Level",
+  "FABULAULTIMA.LevelFormat": "Level {level}",  
   "FABULAULTIMA.DeleteClass": "Delete Class",
   "FABULAULTIMA.SkillLevel": "Skill Level (SL)",
   "FABULAULTIMA.Cost": "Cost",
@@ -218,5 +219,11 @@
   "FABULAULTIMA.FreeAttackWithOff": "Free Attack with Off-hand",
   "FABULAULTIMA.RollFeature": "Roll feature",
   "FABULAULTIMA.AdditionalFormula": "Additional Formula",
-  "FABULAULTIMA.DamageTypeTurnOverride": "Override damage type"
+  "FABULAULTIMA.DamageTypeTurnOverride": "Override damage type",
+
+  "FABULAULTIMA.MainTab": "Main",
+  "FABULAULTIMA.InventoryTab": "Inventory",
+  "FABULAULTIMA.SpellsTab": "Spells",
+  "FABULAULTIMA.EffectsTab": "Effects",
+  "FABULAULTIMA.BioTab": "Bio"
 }
