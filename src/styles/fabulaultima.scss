@@ -14,6 +14,10 @@
 
 /* Styles limited to fabulaultima sheets */
 .fabulaultima {
+  &.sheet.actor {
+    @import 'sheets/character-sheet';
+  }
+
   @import 'components/forms';
   @import 'components/resource';
   @import 'components/items';

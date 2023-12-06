@@ -12,8 +12,8 @@ export class FabulaUltimaActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["fabulaultima", "sheet", "actor"],
       template: "systems/fabulaultima/templates/actor/actor-sheet.html",
-      width: 600,
-      height: 600,
+      width: 400,
+      height: 750,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
     });
   }

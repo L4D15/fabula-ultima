@@ -1,66 +1,139 @@
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
-
+  
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="190" width="190"/>
-    <div class="header-fields">
-      <div class="resources grid grid-2col" style="max-width: 600px;">
-        <div class="resource flex-group-left">
-          <h2 class="charname" style="border: none"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h2>
-
-          <div class="resource-content flexrow flex-center flex-between">
-            <label for="system.attributes.level.value" class="resource-label" style="max-width: 50px;">{{localize "FABULAULTIMA.LevelAbbr"}}</label>
-            <input type="text" name="system.attributes.level.value" value="{{system.attributes.level.value}}" data-dtype="Number" readonly="readonly"/>
+    <div id="info">
+      <div id="avatar">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="190" width="190"/>
+      </div>
+      <div id="bio">
+        <div id="main-info">
+          <div>
+            <div id="name">
+              <input name="name" class="borderless" type="text" value="{{actor.name}}" placeholder="Name"/>
+            </div>
+            <div id="identity">
+              <input name="system.identity" class="borderless" type="text" value="{{system.identity}}" data-dtype="String" placeholder="Identity"/>
+            </div>
           </div>
-
-          <div class="resource-content flexrow flex-center flex-between" style="max-width: 275px;">
-            <label for="system.health.value" class="resource-label" style="max-width: 50px;">{{localize "FABULAULTIMA.HealthAbbr"}}</label>
-            <input class="points-input-right" type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number"/>
-            <span style="flex: 0; margin-left: 5px; margin-right: 5px; display: flex; align-items: center;">/</span>
-            <input class="points-input-right" type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number" readonly="readonly"/>
-            <span style="flex: 0; margin-left: 15px; margin-right: 15px; display: flex; align-items: center; font-size: 15pt;">♦️</span>
-            <span class="points-crisis" style="flex: 0; margin-left: 5px; margin-right: 5px; display: flex; align-items: center;">{{system.crisisHealth}}</span>
-            <span class="resource-label">{{localize "FABULAULTIMA.Crisis"}}</span>
-          </div>
-
-          <div class="resource-content flexrow flex-center flex-between" style="margin-top: 4px; margin-bottom: 4px">
-            <progress class="health-progress" value="{{system.health.value}}" max="{{system.health.max}}">{{system.health_progress}}%</progress>
-          </div>
-
-          <div class="resource-content flexrow flex-center flex-between" style="max-width: 156px;">
-            <label for="system.mind.value" class="resource-label">{{localize "FABULAULTIMA.MindAbbr"}}</label>
-            <input class="points-input-right" type="text" name="system.mind.value" value="{{system.mind.value}}" data-dtype="Number"/>
-            <span style="flex: 0; margin-left: 5px; margin-right: 5px; display: flex; align-items: center;">/</span>
-            <input class="points-input-right" type="text" name="system.mind.max" value="{{system.mind.max}}" data-dtype="Number" readonly="readonly"/>
-          </div>
-
-          <div class="resource-content flexrow flex-center flex-between" style="margin-top: 4px; margin-bottom: 4px">
-            <progress class="mind-progress" value="{{system.mind.value}}" max="{{system.mind.max}}">{{system.mind_progress}}%</progress>
-          </div>
-
-          <div class="resource-content flexrow flex-center flex-between" style="max-width: 156px;">
-            <label for="system.inventory.value" class="resource-label">{{localize "FABULAULTIMA.InventoryAbbr"}}</label>
-            <input class="points-input-right" type="text" name="system.inventory.value" value="{{system.inventory.value}}" data-dtype="Number"/>
-            <span style="flex: 0; margin-left: 5px; margin-right: 5px; display: flex; align-items: center;">/</span>
-            <input class="points-input-right" type="text" name="system.inventory.max" value="{{system.inventory.max}}" data-dtype="Number" readonly="readonly"/>
-          </div>
-
-          <div class="resource-content flexrow flex-center flex-between" style="margin-top: 4px; margin-bottom: 4px">
-            <progress class="inventory-progress" value="{{system.inventory.value}}" max="{{system.inventory.max}}">{{system.inventory_progress}}%</progress>
+          <div id="fabula-points">
+            <label>Fabula Points</label>
+            <input name="system.fabulaPoints" class="borderless" type="text" value="{{system.fabulaPoints}}" data-dtype="Number"/>
           </div>
         </div>
-
-        <div class="resource flex-group-left">
-          <h2 class="charexp"><span style="width: 50%;">{{localize "FABULAULTIMA.ExpAbbr"}}:</span><input name="system.exp" type="text" value="{{system.exp}}" data-dtype="Number"/></h2>
-          <h3 class="charnextexp"><span style="width: 50%;">{{localize "FABULAULTIMA.NextLevel"}}:</span><input type="text" value="10" data-dtype="Number" readonly="readonly"/></h3>
-          <progress id="exp-progress" value="{{system.exp}}" max="10">{{system.exp_progress}}%</progress>
-
-          <br>
-          <h3 class="fabulapoints"><span style="width: 50%;">{{localize "FABULAULTIMA.FabulaPoints"}}:</span><input name="system.fabulaPoints" type="text" value="{{system.fabulaPoints}}" data-dtype="Number"/></h3>
-          <h3 class="zenit"><span style="width: 50%;">{{localize "FABULAULTIMA.Zenit"}}:</span><input name="system.zenit" type="text" value="{{system.zenit}}" data-dtype="Number"/></h3>
+        <div id="leveling">
+          <div class="justified-content">
+            <div id="leveling-values">
+              <label>Level</label>
+              <div>{{system.attributes.level.value}}</div>
+              <a data-action="edit-level" title="{{localize 'FABULAULTIMA.EffectEdit'}}">
+                <i class="fas fa-edit"></i>
+              </a>
+            </div>
+            <div id="xp-values">
+              <input name="system.exp" type="text" value="{{system.exp}}" data-dtype="Number" max="10" class="borderless"/>
+              <span class="faded">/10</span>
+            </div>
+          </div>
+          <div id="leveling-bar">
+            <!-- <div class="progress-bar"></div> -->
+            <progress id="exp-progress" value="{{system.exp}}" max="10">{{system.exp_progress}}%</progress>
+          </div>
         </div>
       </div>
     </div>
+    <div class="attributes">
+      {{#each system.orderedAbilities as |ability key|}}
+      <div id="{{key}}" class="attribute">
+        <label for="ability.value" data-label="{{ability.label}}">{{ability.label}}</label>
+        <select name="ability.value">
+          {{#if (eq ability.value "6")}}
+          <option value="6" selected="selected">d6</option>
+          {{else}}
+          <option value="6">d6</option>
+          {{/if}}
+          
+          {{#if (eq ability.value "8")}}
+          <option value="8" selected="selected">d8</option>
+          {{else}}
+          <option value="8">d8</option>
+          {{/if}}
+          
+          {{#if (eq ability.value "10")}}
+          <option value="10" selected="selected">d10</option>
+          {{else}}
+          <option value="10">d10</option>
+          {{/if}}
+          
+          {{#if (eq ability.value "12")}}
+          <option value="12" selected="selected">d12</option>
+          {{else}}
+          <option value="12">d12</option>
+          {{/if}}
+        </select>
+      </div>
+      {{/each}}
+    </div>
+    <!--
+      <div class="header-fields">
+        <div class="resources grid grid-2col" style="max-width: 600px;">
+          <div class="resource flex-group-left">
+            <h2 class="charname" style="border: none"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h2>
+            
+            <div class="resource-content flexrow flex-center flex-between">
+              <label for="system.attributes.level.value" class="resource-label" style="max-width: 50px;">{{localize "FABULAULTIMA.LevelAbbr"}}</label>
+              <input type="text" name="system.attributes.level.value" value="{{system.attributes.level.value}}" data-dtype="Number" readonly="readonly"/>
+            </div>
+            
+            <div class="resource-content flexrow flex-center flex-between" style="max-width: 275px;">
+              <label for="system.health.value" class="resource-label" style="max-width: 50px;">{{localize "FABULAULTIMA.HealthAbbr"}}</label>
+              <input class="points-input-right" type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number"/>
+              <span style="flex: 0; margin-left: 5px; margin-right: 5px; display: flex; align-items: center;">/</span>
+              <input class="points-input-right" type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number" readonly="readonly"/>
+              <span style="flex: 0; margin-left: 15px; margin-right: 15px; display: flex; align-items: center; font-size: 15pt;">♦️</span>
+              <span class="points-crisis" style="flex: 0; margin-left: 5px; margin-right: 5px; display: flex; align-items: center;">{{system.crisisHealth}}</span>
+              <span class="resource-label">{{localize "FABULAULTIMA.Crisis"}}</span>
+            </div>
+            
+            <div class="resource-content flexrow flex-center flex-between" style="margin-top: 4px; margin-bottom: 4px">
+              <progress class="health-progress" value="{{system.health.value}}" max="{{system.health.max}}">{{system.health_progress}}%</progress>
+            </div>
+            
+            <div class="resource-content flexrow flex-center flex-between" style="max-width: 156px;">
+              <label for="system.mind.value" class="resource-label">{{localize "FABULAULTIMA.MindAbbr"}}</label>
+              <input class="points-input-right" type="text" name="system.mind.value" value="{{system.mind.value}}" data-dtype="Number"/>
+              <span style="flex: 0; margin-left: 5px; margin-right: 5px; display: flex; align-items: center;">/</span>
+              <input class="points-input-right" type="text" name="system.mind.max" value="{{system.mind.max}}" data-dtype="Number" readonly="readonly"/>
+            </div>
+            
+            <div class="resource-content flexrow flex-center flex-between" style="margin-top: 4px; margin-bottom: 4px">
+              <progress class="mind-progress" value="{{system.mind.value}}" max="{{system.mind.max}}">{{system.mind_progress}}%</progress>
+            </div>
+            
+            <div class="resource-content flexrow flex-center flex-between" style="max-width: 156px;">
+              <label for="system.inventory.value" class="resource-label">{{localize "FABULAULTIMA.InventoryAbbr"}}</label>
+              <input class="points-input-right" type="text" name="system.inventory.value" value="{{system.inventory.value}}" data-dtype="Number"/>
+              <span style="flex: 0; margin-left: 5px; margin-right: 5px; display: flex; align-items: center;">/</span>
+              <input class="points-input-right" type="text" name="system.inventory.max" value="{{system.inventory.max}}" data-dtype="Number" readonly="readonly"/>
+            </div>
+            
+            <div class="resource-content flexrow flex-center flex-between" style="margin-top: 4px; margin-bottom: 4px">
+              <progress class="inventory-progress" value="{{system.inventory.value}}" max="{{system.inventory.max}}">{{system.inventory_progress}}%</progress>
+            </div>
+          </div>
+          
+          <div class="resource flex-group-left">
+            <h2 class="charexp"><span style="width: 50%;">{{localize "FABULAULTIMA.ExpAbbr"}}:</span><input name="system.exp" type="text" value="{{system.exp}}" data-dtype="Number"/></h2>
+            <h3 class="charnextexp"><span style="width: 50%;">{{localize "FABULAULTIMA.NextLevel"}}:</span><input type="text" value="10" data-dtype="Number" readonly="readonly"/></h3>
+            <progress id="exp-progress" value="{{system.exp}}" max="10">{{system.exp_progress}}%</progress>
+            
+            <br>
+            <h3 class="fabulapoints"><span style="width: 50%;">{{localize "FABULAULTIMA.FabulaPoints"}}:</span><input name="system.fabulaPoints" type="text" value="{{system.fabulaPoints}}" data-dtype="Number"/></h3>
+            <h3 class="zenit"><span style="width: 50%;">{{localize "FABULAULTIMA.Zenit"}}:</span><input name="system.zenit" type="text" value="{{system.zenit}}" data-dtype="Number"/></h3>
+          </div>
+        </div>
+      </div>
+    -->
   </header>
 
   {{!-- Sheet Tab Navigation --}}
@@ -87,131 +160,134 @@
               <label for="system.identity" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.Identity"}}</label>
               <input type="text" name="system.identity" value="{{system.identity}}" data-dtype="String"/>
             </div>
-            <div class="trait flexrow flex-group-center">
-              <label for="system.origin" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.Origin"}}</label>
-              <input type="text" name="system.origin" value="{{system.origin}}" data-dtype="String"/>
-              <label for="system.theme" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.Theme"}}</label>
-              <input type="text" name="system.theme" value="{{system.theme}}" data-dtype="String"/>
-            </div>
-          </div>
-        </section>
-
-        <section class="stats grid-span-2" style="display: flex;">
-          <div class="abilities flexcol">
-            {{#each system.orderedAbilities as |ability key|}}
-            <div class="ability flexrow flex-group-center">
-              <label for="system.abilities.{{key}}.value" class="resource-label stat flexlarge align-left" data-label="{{ability.label}}" style="min-width: 80px;">{{ability.label}}</label>
-
-              <select name="system.abilities.{{key}}.value">
-                {{#if (eq ability.value "6")}}
-                  <option value="6" selected="selected">d6</option>
-                {{else}}
-                  <option value="6">d6</option>
-                {{/if}}
-
-                {{#if (eq ability.value "8")}}
-                  <option value="8" selected="selected">d8</option>
-                {{else}}
-                  <option value="8">d8</option>
-                {{/if}}
-
-                {{#if (eq ability.value "10")}}
-                  <option value="10" selected="selected">d10</option>
-                {{else}}
-                  <option value="10">d10</option>
-                {{/if}}
+          </section>
+          
+          <section class="stats grid-span-2" style="display: flex;">
+            <div class="abilities flexcol">
+              {{#each system.orderedAbilities as |ability key|}}
+              <div class="ability flexrow flex-group-center">
+                <label for="system.abilities.{{key}}.value" class="resource-label stat flexlarge align-left" data-label="{{ability.label}}" style="min-width: 80px;">{{ability.label}}</label>
                 
-                {{#if (eq ability.value "12")}}
-                  <option value="12" selected="selected">d12</option>
-                {{else}}
-                  <option value="12">d12</option>
-                {{/if}}
-              </select>
-
-              <select name="system.abilities.{{key}}.max">
-                {{#if (eq ability.max "6")}}
+                <select name="system.abilities.{{key}}.value">
+                  {{#if (eq ability.value "6")}}
                   <option value="6" selected="selected">d6</option>
-                {{else}}
+                  {{else}}
                   <option value="6">d6</option>
-                {{/if}}
-
-                {{#if (eq ability.max "8")}}
+                  {{/if}}
+                  
+                  {{#if (eq ability.value "8")}}
                   <option value="8" selected="selected">d8</option>
-                {{else}}
+                  {{else}}
                   <option value="8">d8</option>
-                {{/if}}
-
-                {{#if (eq ability.max "10")}}
+                  {{/if}}
+                  
+                  {{#if (eq ability.value "10")}}
                   <option value="10" selected="selected">d10</option>
-                {{else}}
+                  {{else}}
                   <option value="10">d10</option>
-                {{/if}}
-                
-                {{#if (eq ability.max "12")}}
+                  {{/if}}
+                  
+                  {{#if (eq ability.value "12")}}
                   <option value="12" selected="selected">d12</option>
-                {{else}}
+                  {{else}}
                   <option value="12">d12</option>
+                  {{/if}}
+                </select>
+                
+                <select name="system.abilities.{{key}}.max">
+                  {{#if (eq ability.max "6")}}
+                  <option value="6" selected="selected">d6</option>
+                  {{else}}
+                  <option value="6">d6</option>
+                  {{/if}}
+                  
+                  {{#if (eq ability.max "8")}}
+                  <option value="8" selected="selected">d8</option>
+                  {{else}}
+                  <option value="8">d8</option>
+                  {{/if}}
+                  
+                  {{#if (eq ability.max "10")}}
+                  <option value="10" selected="selected">d10</option>
+                  {{else}}
+                  <option value="10">d10</option>
+                  {{/if}}
+                  
+                  {{#if (eq ability.max "12")}}
+                  <option value="12" selected="selected">d12</option>
+                  {{else}}
+                  <option value="12">d12</option>
+                  {{/if}}
+                </select>
+              </div>
+              {{/each}}
+            </div>
+            <div class="statuses flexcol">
+              {{#each system.statuses1 as |status key|}}
+              <div class="ability flexrow flex-group-center">
+                {{#if status.value}}
+                <input type="checkbox" class="status-checkbox" name="system.status.{{key}}" data-dtype="Boolean" checked="checked"/>
+                {{else}}
+                <input type="checkbox" class="status-checkbox" name="system.status.{{key}}" data-dtype="Boolean"/>
                 {{/if}}
-              </select>
+                <label for="system.status.{{key}}" class="resource-label stat flexlarge align-left" data-label="{{status.label}}">{{status.label}}</label>
+              </div>
+              {{/each}}
             </div>
-            {{/each}}
-          </div>
-          <div class="statuses flexcol">
-            {{#each system.statuses1 as |status key|}}
-            <div class="ability flexrow flex-group-center">
-              {{#if status.value}}
-              <input type="checkbox" class="status-checkbox" name="system.status.{{key}}" data-dtype="Boolean" checked="checked"/>
-              {{else}}
-              <input type="checkbox" class="status-checkbox" name="system.status.{{key}}" data-dtype="Boolean"/>
-              {{/if}}
-              <label for="system.status.{{key}}" class="resource-label stat flexlarge align-left" data-label="{{status.label}}">{{status.label}}</label>
+            <div class="statuses flexcol">
+              {{#each system.statuses2 as |status key|}}
+              <div class="ability flexrow flex-group-center">
+                {{#if status.value}}
+                <input type="checkbox" class="status-checkbox" name="system.status.{{key}}" data-dtype="Boolean" checked="checked"/>
+                {{else}}
+                <input type="checkbox" class="status-checkbox" name="system.status.{{key}}" data-dtype="Boolean"/>
+                {{/if}}
+                <label for="system.status.{{key}}" class="resource-label stat flexlarge align-left" data-label="{{status.label}}">{{status.label}}</label>
+              </div>
+              {{/each}}
             </div>
-            {{/each}}
-          </div>
-          <div class="statuses flexcol">
-            {{#each system.statuses2 as |status key|}}
-            <div class="ability flexrow flex-group-center">
-              {{#if status.value}}
-              <input type="checkbox" class="status-checkbox" name="system.status.{{key}}" data-dtype="Boolean" checked="checked"/>
-              {{else}}
-              <input type="checkbox" class="status-checkbox" name="system.status.{{key}}" data-dtype="Boolean"/>
-              {{/if}}
-              <label for="system.status.{{key}}" class="resource-label stat flexlarge align-left" data-label="{{status.label}}">{{status.label}}</label>
+          </section>
+          
+          <section class="stats grid-span-2" style="display: flex;">
+            <div class="flexcol" style="width: 100%;"> 
+              <div class="trait flexrow flex-group-center" style="margin-bottom: 10px;">
+                <label for="system.peculiarity" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.Peculiarity"}}</label>
+                <input type="text" name="system.peculiarity" value="{{system.peculiarity}}" data-dtype="String"/>
+              </div>
+              <div class="trait flexrow flex-group-center" style="margin-bottom: 10px;">
+                <label for="system.limitCondition" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.LimitCondition"}}</label>
+                <input type="text" name="system.limitCondition" value="{{system.limitCondition}}" data-dtype="String"/>
+              </div>
+              <div class="trait flexrow flex-group-center" style="margin-bottom: 10px;">
+                <progress class="limit-progress" value="{{system.limit.value}}" max="{{system.limit.max}}">{{system.limit_progress}}%</progress>
+              </div>
             </div>
-            {{/each}}
-          </div>
+          </section>
+          <section class="stats grid-span-2" style="display: flex;">
+            <div class="flexcol" style="width: 100%">
+              <div class="trait flexrow" style="margin-bottom: 10px;">
+                <label for="system.defense" class="resource-label flexlarge align-left" style="max-width: 150px; flex: 0 0 120px;">{{localize "FABULAULTIMA.Defense"}}</label>
+                {{system.defense}}
+              </div>
+              <div class="trait flexrow" style="margin-bottom: 10px;">
+                <label for="system.magicDefense" class="resource-label flexlarge align-left" style="max-width: 150px; flex: 0 0 120px;">{{localize "FABULAULTIMA.MagicDefense"}}</label>
+                {{system.magicDefense}}
+              </div>
+              <div class="trait flexrow">
+                <label for="system.initiativeBonus" class="resource-label flexlarge align-left" style="max-width: 150px; flex: 0 0 120px;">{{localize "FABULAULTIMA.InitiativeBonus"}}</label>
+                {{system.initiativeBonus}}
+              </div>
+            </div>
+          </section>
+          
         </section>
-
-        <section class="stats grid-span-2" style="display: flex;">
-          <div class="flexcol" style="width: 100%;"> 
-            <div class="trait flexrow flex-group-center" style="margin-bottom: 10px;">
-              <label for="system.peculiarity" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.Peculiarity"}}</label>
-              <input type="text" name="system.peculiarity" value="{{system.peculiarity}}" data-dtype="String"/>
-            </div>
-            <div class="trait flexrow flex-group-center" style="margin-bottom: 10px;">
-              <label for="system.limitCondition" class="resource-label flexlarge align-left">{{localize "FABULAULTIMA.LimitCondition"}}</label>
-              <input type="text" name="system.limitCondition" value="{{system.limitCondition}}" data-dtype="String"/>
-            </div>
-            <div class="trait flexrow flex-group-center" style="margin-bottom: 10px;">
-              <progress class="limit-progress" value="{{system.limit.value}}" max="{{system.limit.max}}">{{system.limit_progress}}%</progress>
-            </div>
-          </div>
+        <section class="bonds">
+          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
+          {{> "systems/fabulaultima/templates/actor/parts/actor-bonds.html"}}
         </section>
-        <section class="stats grid-span-2" style="display: flex;">
-          <div class="flexcol" style="width: 100%">
-            <div class="trait flexrow" style="margin-bottom: 10px;">
-              <label for="system.defense" class="resource-label flexlarge align-left" style="max-width: 150px; flex: 0 0 120px;">{{localize "FABULAULTIMA.Defense"}}</label>
-              {{system.defense}}
-            </div>
-            <div class="trait flexrow" style="margin-bottom: 10px;">
-              <label for="system.magicDefense" class="resource-label flexlarge align-left" style="max-width: 150px; flex: 0 0 120px;">{{localize "FABULAULTIMA.MagicDefense"}}</label>
-              {{system.magicDefense}}
-            </div>
-            <div class="trait flexrow">
-              <label for="system.initiativeBonus" class="resource-label flexlarge align-left" style="max-width: 150px; flex: 0 0 120px;">{{localize "FABULAULTIMA.InitiativeBonus"}}</label>
-              {{system.initiativeBonus}}
-            </div>
-          </div>
+        <section class="features">
+          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
+          {{> "systems/fabulaultima/templates/actor/parts/actor-features.html"}}
         </section>
 
       </section>
