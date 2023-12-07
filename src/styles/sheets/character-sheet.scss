@@ -162,7 +162,16 @@ input.borderless:hover {
         .final-value {
             font-size: 1.3rem;
             font-weight: bold;
+
+            &.positive {
+                color: green;
+            }
+    
+            &.negative {
+                color: red;
+            }
         }
+
     }
 }
 

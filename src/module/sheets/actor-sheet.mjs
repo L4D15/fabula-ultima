@@ -337,12 +337,16 @@ export class FabulaUltimaActorSheet extends ActorSheet {
     
     _updateCharacterAttributes(actorData) {
         for (const attributeID in CONFIG.FABULAULTIMA.attributes) {
-            let baseValue = actorData.system.attributes[attributeID].base;
-            let currentValue = actorData.system.attributes[attributeID].current;
-            actorData.system.attributes[attributeID].label = game.i18n.localize(CONFIG.FABULAULTIMA.attributes[attributeID]) ?? attributeID;
-            actorData.system.attributes[attributeID].shortLabel = game.i18n.localize(CONFIG.FABULAULTIMA.attributesShort[attributeID]) ?? attributeID;
-            actorData.system.attributes[attributeID].baseDiceSize = Attribute.valueToDiceSize(baseValue);
-            actorData.system.attributes[attributeID].currentDiceSize = Attribute.valueToDiceSize(currentValue);
+            let attribute = actorData.system.attributes[attributeID];
+            let baseValue = attribute.base;
+            let currentValue = attribute.current;
+            
+            attribute.label = game.i18n.localize(CONFIG.FABULAULTIMA.attributes[attributeID]) ?? attributeID;
+            attribute.shortLabel = game.i18n.localize(CONFIG.FABULAULTIMA.attributesShort[attributeID]) ?? attributeID;
+            attribute.baseDiceSize = Attribute.valueToDiceSize(baseValue);
+            attribute.currentDiceSize = Attribute.valueToDiceSize(currentValue);
+            attribute.isDiceSizeIncreased = currentValue > baseValue;
+            attribute.isDiceSizeDecreased = currentValue < baseValue;
         }
     }
     

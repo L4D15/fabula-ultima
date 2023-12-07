@@ -30,7 +30,7 @@
       {{#each system.attributes as |attribute key|}}
       <div id="{{key}}" class="attribute" data-attribute="{{key}}">
         <label for="attribute.current" data-label="{{attribute.label}}">{{attribute.label}}</label>
-        <span class="final-value">{{attribute.currentDiceSize}}</span>
+        <span class="final-value {{#if attribute.isDiceSizeIncreased}}positive{{/if}}{{#if attribute.isDiceSizeDecreased}}negative{{/if}}" >{{attribute.currentDiceSize}}</span>
         <select name="attribute.base" class="attribute-selector">
           {{#if (eq attribute.base "6")}}
           <option value="6" selected="selected">d6</option>
