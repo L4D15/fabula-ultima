@@ -1,13 +1,13 @@
 {
-  "FABULAULTIMA.AbilityVig": "Might",
-  "FABULAULTIMA.AbilityDex": "Dexterity",
-  "FABULAULTIMA.AbilityInt": "Insight",
-  "FABULAULTIMA.AbilityVol": "Willpower",
+  "FABULAULTIMA.AttributeMight": "Might",
+  "FABULAULTIMA.AttributeDexterity": "Dexterity",
+  "FABULAULTIMA.AttributeInsight": "Insight",
+  "FABULAULTIMA.AttributeWillpower": "Willpower",
 
-  "FABULAULTIMA.AbilityVigAbbr": "MIG",
-  "FABULAULTIMA.AbilityDexAbbr": "DEX",
-  "FABULAULTIMA.AbilityIntAbbr": "INS",
-  "FABULAULTIMA.AbilityVolAbbr": "WLP",
+  "FABULAULTIMA.AttributeMightShort": "MIG",
+  "FABULAULTIMA.AttributeDexterityShort": "DEX",
+  "FABULAULTIMA.AttributeInsightShort": "INS",
+  "FABULAULTIMA.AttributeWillpowerShort": "WLP",
 
   "FABULAULTIMA.EffectCreate": "Create Effect",
   "FABULAULTIMA.EffectToggle": "Toggle Effect",

@@ -4,18 +4,18 @@ export const FABULAULTIMA = {};
  * The set of Ability Scores used within the system.
  * @type {Object}
  */
-FABULAULTIMA.abilities = {
-    "dex": "FABULAULTIMA.AbilityDex",
-    "int": "FABULAULTIMA.AbilityInt",
-    "vig": "FABULAULTIMA.AbilityVig",
-    "vol": "FABULAULTIMA.AbilityVol",
+FABULAULTIMA.attributes = {
+    "dexterity": "FABULAULTIMA.AttributeDexterity",
+    "insight": "FABULAULTIMA.AttributeInsight",
+    "might": "FABULAULTIMA.AttributeMight",
+    "willpower": "FABULAULTIMA.AttributeWillpower",
 };
 
-FABULAULTIMA.abilityAbbreviations = {
-    "dex": "FABULAULTIMA.AbilityDexAbbr",
-    "int": "FABULAULTIMA.AbilityIntAbbr",
-    "vig": "FABULAULTIMA.AbilityVigAbbr",
-    "vol": "FABULAULTIMA.AbilityVolAbbr"
+FABULAULTIMA.attributesShort = {
+    "dexterity": "FABULAULTIMA.AttributeDexterityShort",
+    "insight": "FABULAULTIMA.AttributeInsightShort",
+    "might": "FABULAULTIMA.AttributeMightShort",
+    "willpower": "FABULAULTIMA.AttributeWillpowerShort",
 };
 
 FABULAULTIMA.costResources = {
