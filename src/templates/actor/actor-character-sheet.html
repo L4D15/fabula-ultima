@@ -28,10 +28,10 @@
     </div>
     <div class="attributes">
       {{#each system.attributes as |attribute key|}}
-      <div id="{{key}}" class="attribute">
-        <label for="attribute.current" data-label="{{ability.label}}">{{attribute.label}}</label>
-        <span class="final-value">d{{attribute.current}}</span>
-        <select name="attribute.base">
+      <div id="{{key}}" class="attribute" data-attribute="{{key}}">
+        <label for="attribute.current" data-label="{{attribute.label}}">{{attribute.label}}</label>
+        <span class="final-value">{{attribute.currentDiceSize}}</span>
+        <select name="attribute.base" class="attribute-selector">
           {{#if (eq attribute.base "6")}}
           <option value="6" selected="selected">d6</option>
           {{else}}

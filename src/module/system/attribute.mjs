@@ -10,8 +10,6 @@ export class Attribute {
         let value = actorData.system.attributes[attributeID].base;
         
         // TODO: Check status effects
-        // DEBUG: Always lower one dice size
-        value = this.lowerDiceSize(value);
         
         return value;
     }
@@ -32,5 +30,9 @@ export class Attribute {
         if (diceSize == 12) return 12;
         
         return diceSize;
+    }
+
+    static valueToDiceSize(value) {
+        return `d${value}`;
     }
 }

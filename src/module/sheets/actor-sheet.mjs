@@ -1,5 +1,6 @@
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
 import { Localization } from "../helpers/localization.mjs";
+import { Attribute } from "../system/attribute.mjs";
 
 /**
 * Extend the basic ActorSheet with some very simple modifications
@@ -331,15 +332,17 @@ export class FabulaUltimaActorSheet extends ActorSheet {
             context.system.xp.label = game.i18n.format("FABULAULTIMA.LevelFormat", {
                 level: context.system.level.value,
             });
-            
-            console.log(`Updating character Lvl and XP. ${JSON.stringify(context.system.xp)}`);
         }
     }
     
     _updateCharacterAttributes(actorData) {
         for (const attributeID in CONFIG.FABULAULTIMA.attributes) {
+            let baseValue = actorData.system.attributes[attributeID].base;
+            let currentValue = actorData.system.attributes[attributeID].current;
             actorData.system.attributes[attributeID].label = game.i18n.localize(CONFIG.FABULAULTIMA.attributes[attributeID]) ?? attributeID;
             actorData.system.attributes[attributeID].shortLabel = game.i18n.localize(CONFIG.FABULAULTIMA.attributesShort[attributeID]) ?? attributeID;
+            actorData.system.attributes[attributeID].baseDiceSize = Attribute.valueToDiceSize(baseValue);
+            actorData.system.attributes[attributeID].currentDiceSize = Attribute.valueToDiceSize(currentValue);
         }
     }
     
@@ -363,10 +366,12 @@ export class FabulaUltimaActorSheet extends ActorSheet {
             const item = this.actor.items.get(li.data("itemId"));
             item.sheet.render(true);
         });
-        
+
         // -------------------------------------------------------------
         // Everything below here is only needed if the sheet is editable
         if (!this.isEditable) return;
+
+        html.find(".attribute-selector").change(this._onAttributeChanged.bind(this));
         
         // Add Inventory Item
         html.find('.item-create').click(this._onItemCreate.bind(this));
@@ -519,6 +524,20 @@ export class FabulaUltimaActorSheet extends ActorSheet {
                 li.addEventListener("dragstart", handler, false);
             });
         }
+    }
+
+     async _onAttributeChanged(event) {
+        event.preventDefault();
+        const parent = $(event.currentTarget).parents(".attribute");
+        const attributeID = parent.data("attribute");
+        const value = event.target.value;
+        let attributes = this.actor.system.attributes;
+
+        attributes[attributeID].base = value;
+
+        this.actor.update({
+            "system.attributes": attributes
+        });
     }
     
     /**
