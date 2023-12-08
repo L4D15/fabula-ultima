@@ -1,4 +1,10 @@
 {
+  "TYPES.Actor.character": "Character",
+  "TYPES.Actor.npc": "NPC",
+  "TYPES.Actor.villain": "Villain",
+  "TYPES.Item.item": "Item",
+  "TYPES.Item.bond": "Bond",
+
   "FABULAULTIMA.AttributeMight": "Might",
   "FABULAULTIMA.AttributeDexterity": "Dexterity",
   "FABULAULTIMA.AttributeInsight": "Insight",
