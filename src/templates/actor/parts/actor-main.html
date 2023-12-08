@@ -1,0 +1,22 @@
+<div id="resources" class="flexrow" style="gap: 1rem;">
+    <section id="hp" class="health">
+        {{> systems/fabulaultima/templates/partials/progress-bar.html system.health valuePath="system.health.value"}}
+    </section>
+    <section id="mp" class="mind">
+        {{> systems/fabulaultima/templates/partials/progress-bar.html system.mind valuePath="system.mind.value"}}
+    </section>
+</div>
+<ul id="stats" class="flexrow">
+    <li class="stat initiative">
+        <h4 class="stat-name">{{ system.initiative.label }}</h4>
+        <span class="stat-value">{{ system.initiative.value }}</span>
+    </li>
+    <li class="stat defense">
+        <h4 class="stat-name">{{ system.defense.label }}</h4>
+        <span class="stat-value">{{ system.defense.value }}</span>
+    </li>
+    <li class="stat magic-defense">
+        <h4 class="stat-name">{{ system.magicDefense.label }}</h4>
+        <span class="stat-value">{{ system.magicDefense.value }}</span>
+    </li>
+</ul>

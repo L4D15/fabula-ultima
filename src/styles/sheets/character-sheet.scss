@@ -1,0 +1,209 @@
+$border: 2px groove #eeede0;
+$main-font: "Signika", serif;
+$input-focus-border: 1px solid #000;
+$input-focus-background: rgba(0,0,0,0.1);
+
+.faded {
+    color: #696969;
+}
+
+input.borderless {
+    border: 1px solid rgba(0,0,0,0);
+    background: none;
+}
+
+input.borderless:focus,
+input.borderless:hover {
+    border: $input-focus-border;
+    background: $input-focus-background;
+    box-shadow: none;
+}
+
+.justified-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sheet-header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#info {
+    flex-direction: row;
+    display: flex;
+    
+    #avatar {
+        flex: 0 0 100px;
+        border-bottom: $border;
+    }
+    
+    #bio {
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        
+        #main-info {
+            display: flex;
+            flex: 0 0 50px;
+            flex-direction: row;
+            padding-left: 0.5rem;
+            border-bottom: $border;
+            
+            #name {
+                flex: 1 1 auto;
+
+                input {
+                    font-family: $main-font;
+                    font-weight: 900;
+                    font-size: 1.5rem;
+                }
+            }
+
+            #identity {
+                font-family: $main-font;
+            }
+            
+            #fabula-points {
+                flex: 0 0 55px;
+                padding-left: 0.5rem;
+                text-align: center;
+                font-family: $main-font;
+                border-left: $border;
+
+                label {
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    letter-spacing: 0px;
+                }
+
+                input {
+                    font-family: $main-font;
+                    font-size: 1.2rem;
+                }
+            }
+
+        }
+
+        #leveling {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
+            padding-left: 0.5rem;
+            border-bottom: $border;
+
+            #leveling-values {
+                display: flex;
+                flex: 1 0 auto;
+                flex-direction: row;
+                font-size: 1rem;
+                align-items: center;
+
+                a {
+                    padding-left: 8px;
+                }
+            }
+
+            #leveling-bar {
+                display: flex;
+                flex: 1 0 auto;
+            }
+
+            #xp-values {
+                display: flex;
+                flex-direction: row;
+                flex: 0 0 48px;
+                align-items: center;
+                font-family: $main-font;
+                font-weight: bold;
+                font-size: 1rem;
+            }
+
+            label {
+                font-family: $main-font;
+                font-weight: bold;
+                padding-right: 8px;
+            }
+        }
+    }
+}
+
+.attributes {
+    display: flex;
+    flex-grow: 1;
+    border-bottom: $border;
+    padding-bottom: 0.5rem;
+
+    .attribute {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        flex-direction: column;
+        border-top: none;
+        border-left: none;
+        border-right: $border;
+
+        &:first-child {
+            border-left: none;
+        }
+
+        &:last-child {
+            border-right: none;
+        }
+
+        label {
+            font-family: $main-font;
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        .final-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+
+            &.positive {
+                color: green;
+            }
+    
+            &.negative {
+                color: red;
+            }
+        }
+
+    }
+}
+
+#stats {
+    list-style: none;
+    padding: 0;
+    border-bottom: $border;
+    border-top: $border;
+
+    .stat {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .stat-name {
+            font-family: $main-font;
+            font-variant-caps: small-caps;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .stat-value {
+            font-family: $main-font;
+            font-size: 1.15rem;
+            margin-bottom: 0.2rem;
+        }
+
+        &.defense {
+            border-left: $border;
+            border-right: $border;
+        }
+    }
+}

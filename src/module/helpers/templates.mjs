@@ -12,6 +12,8 @@
       "systems/fabulaultima/templates/actor/parts/actor-spells.html",
       "systems/fabulaultima/templates/actor/parts/actor-effects.html",
       "systems/fabulaultima/templates/actor/parts/actor-bonds.html",
-      "systems/fabulaultima/templates/actor/parts/actor-limits.html"
+      "systems/fabulaultima/templates/actor/parts/actor-limits.html",
+      "systems/fabulaultima/templates/actor/parts/actor-main.html",
+      "systems/fabulaultima/templates/partials/progress-bar.html",
   ]);
 };

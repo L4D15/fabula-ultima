@@ -1,3 +1,11 @@
+import { Health } from "../system/health.mjs";
+import { Mind } from "../system/mind.mjs";
+import { Inventory } from "../system/inventory.mjs";
+import { Attribute } from "../system/attribute.mjs";
+import { Initiative } from "../system/initiative.mjs";
+import { Defense } from "../system/defense.mjs";
+import { MagicDefense } from "../system/magicdefense.mjs";
+
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
@@ -29,45 +37,31 @@ export class FabulaUltimaActor extends Actor {
    * is queried and has a roll executed directly from it).
    */
   prepareDerivedData() {
-    const actorData = this.system;
-
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.
-    this._prepareCharacterData(actorData);
-    this._prepareNpcData(actorData);
+    this._prepareCharacterData(this);
+    this._prepareNpcData(this);
   }
 
   /**
    * Prepare Character type specific data
    */
   _prepareCharacterData(actorData) {
-    if (this.type !== 'character') return;
-
-    let startingHealth = actorData.abilities.vig.max * 5;
-    startingHealth += actorData.attributes.level.value;
-
-    let startingMind = actorData.abilities.vol.max * 5;
-    startingMind += actorData.attributes.level.value;
-
-    let startingInventory = 6;
-
-    const classes = this.items.filter(i => i.type === "class");
-    for (let c of classes) {
-      startingHealth += Number(c.system.healthBonus);
-      startingMind += Number(c.system.mindBonus);
-      startingInventory += Number(c.system.inventoryBonus);
-
-      const features = this.items.filter(i => i.type === "feature" && i.system.class === c.system.abbr);
-      for (let f of features) {
-        startingHealth += Number(f.system.passive.hpBonus) * f.system.level;
-        startingMind += Number(f.system.passive.mpBonus) * f.system.level;
-        startingInventory += Number(f.system.passive.ipBonus);
-      }
+    if (actorData.type !== 'character') {
+      console.log(`Actor ${actorData.name} is not a hero character.\n ${JSON.stringify(actorData)}`);
+      return;
     }
 
-    actorData.health.max = startingHealth;
-    actorData.mind.max = startingMind;
-    actorData.inventory.max = startingInventory;
+    for (let attributeID in CONFIG.FABULAULTIMA.attributes) {
+      actorData.system.attributes[attributeID].current = Attribute.calculateAttributeCurrentValue(actorData, attributeID);
+    }
+
+    actorData.system.health.max = Health.calculateHealthPointsCapacity(actorData);
+    actorData.system.mind.max = Mind.calculateMindPointsCapacity(actorData);
+    actorData.system.inventory.max = Inventory.calculateInventoryPointsCapacity(actorData);
+    actorData.system.initiative.value = Initiative.calculateInitiative(actorData);
+    actorData.system.defense.value = Defense.calculateDefense(actorData);
+    actorData.system.magicDefense.value = MagicDefense.calculateMagicDefense(actorData);
   }
 
   /**

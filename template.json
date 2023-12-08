@@ -1,296 +1,311 @@
 {
-  "Actor": {
-    "types": ["character", "npc", "villain"],
-    "templates": {
-      "base": {
-        "health": {
-          "value": 5,
-          "min": 0,
-          "max": 999
+    "Actor": {
+        "types": ["character", "npc", "villain"],
+        "templates": {
+            "base": {
+                "health": {
+                    "value": 5,
+                    "min": 0,
+                    "max": 999
+                },
+                "mind": {
+                    "value": 5,
+                    "min": 0,
+                    "max": 999
+                },
+                "biography": "",
+                "level": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 50
+                },
+                "initiative": {
+                    "vaue": 0
+                },
+                "defense": {
+                    "value": 0
+                },
+                "magicDefense": {
+                    "value": 0
+                },
+                "affinities": {
+                    "normal": "neutral",
+                    "wind": "neutral",
+                    "lightning": "neutral",
+                    "dark": "neutral",
+                    "earth": "neutral",
+                    "fire": "neutral",
+                    "ice": "neutral",
+                    "light": "neutral",
+                    "poison": "neutral"
+                },
+                "statusImmunities": {
+                    "slow": false,
+                    "dazed": false,
+                    "weak": false,
+                    "shaken": false,
+                    "enraged": false,
+                    "poisoned": false
+                },
+                "attributes": {
+                    "dexterity": {
+                        "base": 6,
+                        "current": 6,
+                        "max": 12
+                    },
+                    "insight": {
+                        "base": 6,
+                        "current": 6,
+                        "max": 12
+                    },
+                    "might": {
+                        "base": 6,
+                        "current": 6,
+                        "max": 12
+                    },
+                    "willpower": {
+                        "base": 6,
+                        "current": 6,
+                        "max": 12
+                    }
+                },
+                "status": {
+                    "slow": false,
+                    "dazed": false,
+                    "weak": false,
+                    "shaken": false,
+                    "enraged": false,
+                    "poisoned": false
+                },
+                "equipped": {
+                    "mainHand": "",
+                    "offHand": "",
+                    "accessory": "",
+                    "accessory2": "",
+                    "armor": ""
+                },
+                "override": {
+                    "damageTypeTurn": "",
+                    "damageTypeScene": ""
+                }
+            }
         },
-        "mind": {
-          "value": 5,
-          "min": 0,
-          "max": 999
+        "character": {
+            "templates": ["base"],
+            "inventory": {
+                "value": 2,
+                "min": 0,
+                "max": 99
+            },
+            "limit": {
+                "value": 0,
+                "min": 0,
+                "max": 4
+            },
+            "proficiencies": [],
+            "fabulaPoints": 3,
+            "identity": "",
+            "origin": "",
+            "theme": "",
+            "peculiarity": "",
+            "limitCondition": "",
+            "zenit": 0,
+            "xp": {
+                "value": 0,
+                "min": 0,
+                "max": 10
+            }
         },
-        "biography": "",
-        "attributes": {
-          "level": {
-            "value": 5,
-            "min": 5,
-            "max": 60
-          }
+        "npc": {
+            "templates": ["base"],
+            "type": "",
+            "rank": "soldier",
+            "championLevel": 0,
+            "traits": "",
+            "specialRules": ""
         },
-        "affinities": {
-          "normal": "neutral",
-          "wind": "neutral",
-          "lightning": "neutral",
-          "dark": "neutral",
-          "earth": "neutral",
-          "fire": "neutral",
-          "ice": "neutral",
-          "light": "neutral",
-          "poison": "neutral"
-        },
-        "statusImmunities": {
-          "slow": false,
-          "dazed": false,
-          "weak": false,
-          "shaken": false,
-          "enraged": false,
-          "poisoned": false
-        },
-        "abilities": {
-          "dex": {
-            "value": 10,
-            "max": 10
-          },
-          "int": {
-            "value": 10,
-            "max": 10
-          },
-          "vig": {
-            "value": 10,
-            "max": 10
-          },
-          "vol": {
-            "value": 10,
-            "max": 10
-          }
-        },
-        "status": {
-          "slow": false,
-          "dazed": false,
-          "weak": false,
-          "shaken": false,
-          "enraged": false,
-          "poisoned": false
-        },
-        "equipped": {
-          "mainHand": "",
-          "offHand": "",
-          "accessory": "",
-          "accessory2": "",
-          "armor": ""
-        },
-        "override": {
-          "damageTypeTurn": "",
-          "damageTypeScene": ""
+        "villain": {
+            "templates": ["base"],
+            "type": "",
+            "rank": "soldier",
+            "championLevel": 0,
+            "traits": "",
+            "specialRules": "",
+            "ultimaPoints": "5",
+            "ascensionLevel": "minor"
         }
-      }
     },
-    "character": {
-      "templates": ["base"],
-      "inventory": {
-        "value": 2,
-        "min": 0,
-        "max": 99
-      },
-      "limit": {
-        "value": 0,
-        "min": 0,
-        "max": 4
-      },
-      "proficiencies": [],
-      "fabulaPoints": 3,
-      "identity": "",
-      "origin": "",
-      "theme": "",
-      "peculiarity": "",
-      "limitCondition": "",
-      "zenit": 0,
-      "exp": 0
-    },
-    "npc": {
-      "templates": ["base"],
-      "type": "",
-      "rank": "soldier",
-      "championLevel": 0,
-      "traits": "",
-      "specialRules": ""
-    },
-    "villain": {
-      "templates": ["base"],
-      "type": "",
-      "rank": "soldier",
-      "championLevel": 0,
-      "traits": "",
-      "specialRules": "",
-      "ultimaPoints": "5",
-      "ascensionLevel": "minor"
-    }
-  },
-  "Item": {
-    "types": ["item", "consumable", "feature", "heroicFeature", "spell", "class", "bond", "baseAttack", "weapon", "armor", "shield", "accessory", "artifact", "limit"],
-    "templates": {
-      "base": {
-        "description": "",
-        "formula": "",
-        "page": ""
-      },
-      "buyable": {
-        "zenit": 0
-      },
-      "rollable": {
-        "firstAbility": "",
-        "secondAbility": ""
-      },
-      "rareable": { 
-        "rarity": "",
-        "quality": {
-          "description": "",
-          "initiativeBonus": 0,
-          "defenseBonus": 0,
-          "magicDefenseBonus": 0,
-          "overrideDamageType": "",
-          "meleeDamageBonus": 0,
-          "rangedDamageBonus": 0,
-          "meleePrecisionBonus": 0,
-          "rangedPrecisionBonus": 0,
-          "condition": "",
-          "rituals": ""
+    "Item": {
+        "types": ["item", "consumable", "feature", "heroicFeature", "spell", "class", "bond", "baseAttack", "weapon", "armor", "shield", "accessory", "artifact", "limit"],
+        "templates": {
+            "base": {
+                "description": "",
+                "formula": "",
+                "page": ""
+            },
+            "buyable": {
+                "zenit": 0
+            },
+            "rollable": {
+                "firstAbility": "",
+                "secondAbility": ""
+            },
+            "rareable": { 
+            "rarity": "",
+            "quality": {
+                "description": "",
+                "initiativeBonus": 0,
+                "defenseBonus": 0,
+                "magicDefenseBonus": 0,
+                "overrideDamageType": "",
+                "meleeDamageBonus": 0,
+                "rangedDamageBonus": 0,
+                "meleePrecisionBonus": 0,
+                "rangedPrecisionBonus": 0,
+                "condition": "",
+                "rituals": ""
+            }
+        },
+        "featureBase": {
+            "timing": "",
+            "cost": {
+                "amount": 0,
+                "resource": ""
+            },
+            "passive": {
+                "hpBonus": 0,
+                "mpBonus": 0,
+                "ipBonus": 0,
+                "openTestBonus": 0,
+                "meleePrecisionBonus": 0,
+                "rangedPrecisionBonus": 0,
+                "spellBonus": 0,
+                "baseMeleeDamageBonus": 0,
+                "meleeDamageBonus": 0,
+                "baseRangedDamageBonus": 0,
+                "rangedDamageBonus": 0,
+                "baseSpellDamageBonus": 0,
+                "spellDamageBonus": 0,
+                "condition": "",
+                "rituals": ""
+            },
+            "active": {
+                "hasRoll": false,
+                "firstAbility": "",
+                "secondAbility": "",
+                "hasFreeAttack": false,
+                "addLevelToDamage": false,
+                "addLevelToPrecision": false,
+                "additionalFormula": ""
+            },
+            "override": {
+                "overrideType": false,
+                "damageTypeTurn": "",
+                "damageTypeScene": ""
+            }
         }
-      },
-      "featureBase": {
-        "timing": "",
-        "cost": {
-          "amount": 0,
-          "resource": ""
-        },
-        "passive": {
-          "hpBonus": 0,
-          "mpBonus": 0,
-          "ipBonus": 0,
-          "openTestBonus": 0,
-          "meleePrecisionBonus": 0,
-          "rangedPrecisionBonus": 0,
-          "spellBonus": 0,
-          "baseMeleeDamageBonus": 0,
-          "meleeDamageBonus": 0,
-          "baseRangedDamageBonus": 0,
-          "rangedDamageBonus": 0,
-          "baseSpellDamageBonus": 0,
-          "spellDamageBonus": 0,
-          "condition": "",
-          "rituals": ""
-        },
-        "active": {
-          "hasRoll": false,
-          "firstAbility": "",
-          "secondAbility": "",
-          "hasFreeAttack": false,
-          "addLevelToDamage": false,
-          "addLevelToPrecision": false,
-          "additionalFormula": ""
-        },
-        "override": {
-          "overrideType": false,
-          "damageTypeTurn": "",
-          "damageTypeScene": ""
-        }
-      }
     },
     "item": {
-      "templates": ["base", "buyable"],
-      "quantity": 1
+        "templates": ["base", "buyable"],
+        "quantity": 1
     },
     "consumable": {
-      "templates": ["base"],
-      "recover": {
-        "amount": 0,
-        "resource": ""
-      },
-      "damage": {
-        "amount": 0,
-        "type": ""
-      },
-      "inventoryCost": 0
+        "templates": ["base"],
+        "recover": {
+            "amount": 0,
+            "resource": ""
+        },
+        "damage": {
+            "amount": 0,
+            "type": ""
+        },
+        "inventoryCost": 0
     },
     "feature": {
-      "templates": ["base, featureBase"],
-      "class": "",
-      "level": 1,
-      "maxLevel": 1
+        "templates": ["base, featureBase"],
+        "class": "",
+        "level": 1,
+        "maxLevel": 1
     },
     "heroicFeature": {
-      "templates": ["base, featureBase"],
-      "requiredClass1": "",
-      "requiredClass2": "",
-      "requiredClass3": "",
-      "requiredFeature1": "",
-      "requiredFeature2": "",
-      "requiredFeature3": ""
+        "templates": ["base, featureBase"],
+        "requiredClass1": "",
+        "requiredClass2": "",
+        "requiredClass3": "",
+        "requiredFeature1": "",
+        "requiredFeature2": "",
+        "requiredFeature3": ""
     },
     "spell": {
-      "templates": ["base"],
-      "class": "",
-      "target": "",
-      "duration": "",
-      "formula": "",
-      "cost": {
-        "amount": 0,
-        "resource": ""
-      }
+        "templates": ["base"],
+        "class": "",
+        "target": "",
+        "duration": "",
+        "formula": "",
+        "cost": {
+            "amount": 0,
+            "resource": ""
+        }
     },
     "class": {
-      "description": "",
-      "level": 1,
-      "abbr": "",
-      "healthBonus": 0,
-      "mindBonus": 0,
-      "inventoryBonus": 0
+        "description": "",
+        "level": 1,
+        "abbr": "",
+        "healthBonus": 0,
+        "mindBonus": 0,
+        "inventoryBonus": 0
     },
     "bond": {
-      "who": "",
-      "feeling1": "",
-      "feeling2": "",
-      "feeling3": ""
+        "who": "",
+        "feeling1": "",
+        "feeling2": "",
+        "feeling3": ""
     },
     "baseAttack": {
-      "templates": ["base"],
-      "formula": "",
-      "damage": {
-        "bonus": 0,
+        "templates": ["base"],
+        "formula": "",
+        "damage": {
+            "bonus": 0,
+            "type": ""
+        },
         "type": ""
-      },
-      "type": ""
     },
     "weapon": {
-      "templates": ["base", "rollable", "buyable", "rareable"],
-      "twoHanded": false,
-      "category": "",
-      "damage": {
-        "bonus": 0,
-        "type": ""
-      },
-      "precisionBonus": 0,
-      "defenseBonus": 0,
-      "magicDefenseBonus": 0,
-      "type": "",
-      "isMartial": false
+        "templates": ["base", "rollable", "buyable", "rareable"],
+        "twoHanded": false,
+        "category": "",
+        "damage": {
+            "bonus": 0,
+            "type": ""
+        },
+        "precisionBonus": 0,
+        "defenseBonus": 0,
+        "magicDefenseBonus": 0,
+        "type": "",
+        "isMartial": false
     },
     "armor": {
-      "templates": ["base", "buyable", "rareable"],
-      "defenseFormula": "",
-      "magicDefenseFormula": "",
-      "initiativeBonus": 0,
-      "isMartial": false
+        "templates": ["base", "buyable", "rareable"],
+        "defenseFormula": "",
+        "magicDefenseFormula": "",
+        "initiativeBonus": 0,
+        "isMartial": false
     },
     "shield": {
-      "templates": ["base", "buyable", "rareable"],
-      "defenseBonus": 0,
-      "magicDefenseBonus": 0,
-      "isMartial": false
+        "templates": ["base", "buyable", "rareable"],
+        "defenseBonus": 0,
+        "magicDefenseBonus": 0,
+        "isMartial": false
     },
     "accessory": {
-      "templates": ["base", "buyable", "rareable"]
+        "templates": ["base", "buyable", "rareable"]
     },
     "artifact": {
-      "templates": ["base"]
+        "templates": ["base"]
     },
     "limit": {
-      "templates": ["base"],
-      "partner": ""
+        "templates": ["base"],
+        "partner": ""
     }
-  }
+}
 }

@@ -1,13 +1,13 @@
 {
-  "FABULAULTIMA.AbilityVig": "Might",
-  "FABULAULTIMA.AbilityDex": "Dexterity",
-  "FABULAULTIMA.AbilityInt": "Insight",
-  "FABULAULTIMA.AbilityVol": "Willpower",
+  "FABULAULTIMA.AttributeMight": "Might",
+  "FABULAULTIMA.AttributeDexterity": "Dexterity",
+  "FABULAULTIMA.AttributeInsight": "Insight",
+  "FABULAULTIMA.AttributeWillpower": "Willpower",
 
-  "FABULAULTIMA.AbilityVigAbbr": "MIG",
-  "FABULAULTIMA.AbilityDexAbbr": "DEX",
-  "FABULAULTIMA.AbilityIntAbbr": "INS",
-  "FABULAULTIMA.AbilityVolAbbr": "WLP",
+  "FABULAULTIMA.AttributeMightShort": "MIG",
+  "FABULAULTIMA.AttributeDexterityShort": "DEX",
+  "FABULAULTIMA.AttributeInsightShort": "INS",
+  "FABULAULTIMA.AttributeWillpowerShort": "WLP",
 
   "FABULAULTIMA.EffectCreate": "Create Effect",
   "FABULAULTIMA.EffectToggle": "Toggle Effect",
@@ -149,6 +149,7 @@
   "FABULAULTIMA.Features": "Features",
   "FABULAULTIMA.Name": "Name",
   "FABULAULTIMA.Level": "Level",
+  "FABULAULTIMA.LevelFormat": "Level {level}",  
   "FABULAULTIMA.DeleteClass": "Delete Class",
   "FABULAULTIMA.SkillLevel": "Skill Level (SL)",
   "FABULAULTIMA.Cost": "Cost",
@@ -180,6 +181,7 @@
   "FABULAULTIMA.EnemyTurn": "Enemy Turn",
 
   "FABULAULTIMA.Peculiarity": "Peculiarity",
+  "FABULAULTIMA.Initiative": "Initiative",
   "FABULAULTIMA.Defense": "Defense",
   "FABULAULTIMA.MagicDefense": "Magic Defense",
 
@@ -218,5 +220,11 @@
   "FABULAULTIMA.FreeAttackWithOff": "Free Attack with Off-hand",
   "FABULAULTIMA.RollFeature": "Roll feature",
   "FABULAULTIMA.AdditionalFormula": "Additional Formula",
-  "FABULAULTIMA.DamageTypeTurnOverride": "Override damage type"
+  "FABULAULTIMA.DamageTypeTurnOverride": "Override damage type",
+
+  "FABULAULTIMA.MainTab": "Main",
+  "FABULAULTIMA.InventoryTab": "Inventory",
+  "FABULAULTIMA.SpellsTab": "Spells",
+  "FABULAULTIMA.EffectsTab": "Effects",
+  "FABULAULTIMA.BioTab": "Bio"
 }
