@@ -106,82 +106,85 @@ export class FabulaUltimaActorSheet extends ActorSheet {
         this._updateCharacterAttributes(context);
         this._updateHealth(context);
         this._updateMind(context);
+        this._updateInitiative(context);
+        this._updateDefense(context);
+        this._updateMagicDefense(context);
         await this._updateEquipmentBasedStats(context);
     }
     
     async _updateEquipmentBasedStats(context) {
-        context.system.initiativeBonus = 0;
-        context.system.defense = parseInt(context.system.attributes.dexterity.value);
-        context.system.magicDefense = parseInt(context.system.attributes.insight.value);
+        // context.system.initiativeBonus = 0;
+        // context.system.defense = parseInt(context.system.attributes.dexterity.value);
+        // context.system.magicDefense = parseInt(context.system.attributes.insight.value);
         
-        if (context.system.equipped.armor !== "") {
-            const armor = this.actor.items.get(context.system.equipped.armor);
-            if (armor) {
-                context.system.initiativeBonus = parseInt(armor.system.initiativeBonus);
+        // if (context.system.equipped.armor !== "") {
+        //     const armor = this.actor.items.get(context.system.equipped.armor);
+        //     if (armor) {
+        //         context.system.initiativeBonus = parseInt(armor.system.initiativeBonus);
                 
-                if (armor.system.defenseFormula.includes("@")) {
-                    const roll = await new Roll(armor.system.defenseFormula, this.actor.getRollData()).roll();
-                    console.log(roll);
-                    context.system.defense = parseInt(roll.total);
-                } else {
-                    context.system.defense = parseInt(armor.system.defenseFormula);
-                }
+        //         if (armor.system.defenseFormula.includes("@")) {
+        //             const roll = await new Roll(armor.system.defenseFormula, this.actor.getRollData()).roll();
+        //             console.log(roll);
+        //             context.system.defense = parseInt(roll.total);
+        //         } else {
+        //             context.system.defense = parseInt(armor.system.defenseFormula);
+        //         }
                 
-                if (armor.system.magicDefenseFormula.includes("@")) {
-                    const roll = await new Roll(armor.system.magicDefenseFormula, this.actor.getRollData()).roll();
-                    context.system.magicDefense = parseInt(roll.total);
-                } else {
-                    context.system.magicDefense = parseInt(armor.system.defenseFormula);
-                }
-            }
-        }
+        //         if (armor.system.magicDefenseFormula.includes("@")) {
+        //             const roll = await new Roll(armor.system.magicDefenseFormula, this.actor.getRollData()).roll();
+        //             context.system.magicDefense = parseInt(roll.total);
+        //         } else {
+        //             context.system.magicDefense = parseInt(armor.system.defenseFormula);
+        //         }
+        //     }
+        // }
         
-        let mainHand;
-        if (context.system.equipped.mainHand !== "") {
-            mainHand = this.actor.items.get(context.system.equipped.mainHand);
-            if (mainHand) {
-                if (mainHand.system.quality) {
-                    context.system.initiativeBonus += parseInt(mainHand.system.quality.initiativeBonus);
-                    context.system.defense += parseInt(mainHand.system.quality.defenseBonus);
-                    context.system.magicDefense += parseInt(mainHand.system.quality.magicDefenseBonus);
-                }
+        // let mainHand;
+        // if (context.system.equipped.mainHand !== "") {
+        //     mainHand = this.actor.items.get(context.system.equipped.mainHand);
+        //     if (mainHand) {
+        //         if (mainHand.system.quality) {
+        //             context.system.initiativeBonus += parseInt(mainHand.system.quality.initiativeBonus);
+        //             context.system.defense += parseInt(mainHand.system.quality.defenseBonus);
+        //             context.system.magicDefense += parseInt(mainHand.system.quality.magicDefenseBonus);
+        //         }
                 
-                context.system.defense += parseInt(mainHand.system.defenseBonus);
-                context.system.magicDefense += parseInt(mainHand.system.magicDefenseBonus);
-            }
-        }
+        //         context.system.defense += parseInt(mainHand.system.defenseBonus);
+        //         context.system.magicDefense += parseInt(mainHand.system.magicDefenseBonus);
+        //     }
+        // }
         
-        if (context.system.equipped.offHand !== "") {
-            const offHand = this.actor.items.get(context.system.equipped.offHand);
-            if (offHand && mainHand && mainHand.id !== offHand.id) {
-                if (offHand.system.quality) {
-                    context.system.initiativeBonus += parseInt(offHand.system.quality.initiativeBonus);
-                    context.system.defense += parseInt(offHand.system.quality.defenseBonus);
-                    context.system.magicDefense += parseInt(offHand.system.quality.magicDefenseBonus);
-                }
+        // if (context.system.equipped.offHand !== "") {
+        //     const offHand = this.actor.items.get(context.system.equipped.offHand);
+        //     if (offHand && mainHand && mainHand.id !== offHand.id) {
+        //         if (offHand.system.quality) {
+        //             context.system.initiativeBonus += parseInt(offHand.system.quality.initiativeBonus);
+        //             context.system.defense += parseInt(offHand.system.quality.defenseBonus);
+        //             context.system.magicDefense += parseInt(offHand.system.quality.magicDefenseBonus);
+        //         }
                 
-                context.system.defense += parseInt(offHand.system.defenseBonus);
-                context.system.magicDefense += parseInt(offHand.system.magicDefenseBonus);
-            }
-        }
+        //         context.system.defense += parseInt(offHand.system.defenseBonus);
+        //         context.system.magicDefense += parseInt(offHand.system.magicDefenseBonus);
+        //     }
+        // }
         
-        if (context.system.equipped.accessory !== "") {
-            const acc = this.actor.items.get(context.system.equipped.accessory);
-            if (acc && acc.system.quality) {
-                context.system.initiativeBonus += parseInt(acc.system.quality.initiativeBonus);
-                context.system.defense += parseInt(acc.system.quality.defenseBonus);
-                context.system.magicDefense += parseInt(acc.system.quality.magicDefenseBonus);
-            }
-        }
+        // if (context.system.equipped.accessory !== "") {
+        //     const acc = this.actor.items.get(context.system.equipped.accessory);
+        //     if (acc && acc.system.quality) {
+        //         context.system.initiativeBonus += parseInt(acc.system.quality.initiativeBonus);
+        //         context.system.defense += parseInt(acc.system.quality.defenseBonus);
+        //         context.system.magicDefense += parseInt(acc.system.quality.magicDefenseBonus);
+        //     }
+        // }
         
-        if (context.system.equipped.accessory2 !== "") {
-            const acc = this.actor.items.get(context.system.equipped.accessory2);
-            if (acc && acc.system.quality) {
-                context.system.initiativeBonus += parseInt(acc.system.quality.initiativeBonus);
-                context.system.defense += parseInt(acc.system.quality.defenseBonus);
-                context.system.magicDefense += parseInt(acc.system.quality.magicDefenseBonus);
-            }
-        }
+        // if (context.system.equipped.accessory2 !== "") {
+        //     const acc = this.actor.items.get(context.system.equipped.accessory2);
+        //     if (acc && acc.system.quality) {
+        //         context.system.initiativeBonus += parseInt(acc.system.quality.initiativeBonus);
+        //         context.system.defense += parseInt(acc.system.quality.defenseBonus);
+        //         context.system.magicDefense += parseInt(acc.system.quality.magicDefenseBonus);
+        //     }
+        // }
     }
     
     /**
@@ -356,6 +359,18 @@ export class FabulaUltimaActorSheet extends ActorSheet {
     
     _updateMind(actorData) {
         actorData.system.mind.label = game.i18n.localize("FABULAULTIMA.MindPoints");
+    }
+
+    _updateInitiative(actorData) {
+        actorData.system.initiative.label = game.i18n.localize("FABULAULTIMA.Initiative");
+    }
+
+    _updateDefense(actorData) {
+        actorData.system.defense.label = game.i18n.localize("FABULAULTIMA.Defense");
+    }
+
+    _updateMagicDefense(actorData) {
+        actorData.system.magicDefense.label = game.i18n.localize("FABULAULTIMA.MagicDefense");
     }
     
     /* -------------------------------------------- */

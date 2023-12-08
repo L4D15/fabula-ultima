@@ -175,16 +175,35 @@ input.borderless:hover {
     }
 }
 
-#resources {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: row;
+#stats {
+    list-style: none;
+    padding: 0;
+    border-bottom: $border;
+    border-top: $border;
 
-    section:first-child {
-        margin-right: 0.5rem;
-    }
+    .stat {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-    section:last-child {
-        margin-left: 0.5rem;
+        .stat-name {
+            font-family: $main-font;
+            font-variant-caps: small-caps;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .stat-value {
+            font-family: $main-font;
+            font-size: 1.15rem;
+            margin-bottom: 0.2rem;
+        }
+
+        &.defense {
+            border-left: $border;
+            border-right: $border;
+        }
     }
 }

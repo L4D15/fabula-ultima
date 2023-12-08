@@ -2,6 +2,9 @@ import { Health } from "../system/health.mjs";
 import { Mind } from "../system/mind.mjs";
 import { Inventory } from "../system/inventory.mjs";
 import { Attribute } from "../system/attribute.mjs";
+import { Initiative } from "../system/initiative.mjs";
+import { Defense } from "../system/defense.mjs";
+import { MagicDefense } from "../system/magicdefense.mjs";
 
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
@@ -56,8 +59,9 @@ export class FabulaUltimaActor extends Actor {
     actorData.system.health.max = Health.calculateHealthPointsCapacity(actorData);
     actorData.system.mind.max = Mind.calculateMindPointsCapacity(actorData);
     actorData.system.inventory.max = Inventory.calculateInventoryPointsCapacity(actorData);
-
-    console.log(`Prepared data for actor ${actorData.name}`);
+    actorData.system.initiative.value = Initiative.calculateInitiative(actorData);
+    actorData.system.defense.value = Defense.calculateDefense(actorData);
+    actorData.system.magicDefense.value = MagicDefense.calculateMagicDefense(actorData);
   }
 
   /**

@@ -19,6 +19,15 @@
                     "min": 0,
                     "max": 50
                 },
+                "initiative": {
+                    "vaue": 0
+                },
+                "defense": {
+                    "value": 0
+                },
+                "magicDefense": {
+                    "value": 0
+                },
                 "affinities": {
                     "normal": "neutral",
                     "wind": "neutral",
