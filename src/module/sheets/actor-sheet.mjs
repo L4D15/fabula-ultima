@@ -7,7 +7,6 @@ import { Attribute } from "../system/attribute.mjs";
 * @extends {ActorSheet}
 */
 export class FabulaUltimaActorSheet extends ActorSheet {
-    
     /** @override */
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
@@ -15,17 +14,23 @@ export class FabulaUltimaActorSheet extends ActorSheet {
             template: "systems/fabulaultima/templates/actor/actor-sheet.html",
             width: 400,
             height: 750,
-            tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+            tabs: [
+                {
+                    navSelector: ".sheet-tabs",
+                    contentSelector: ".sheet-body",
+                    initial: "features",
+                },
+            ],
         });
     }
-    
+
     /** @override */
     get template() {
         return `systems/fabulaultima/templates/actor/actor-${this.actor.type}-sheet.html`;
     }
-    
+
     /* -------------------------------------------- */
-    
+
     /** @override */
     async getData() {
         // Retrieve the data structure from the base sheet. You can inspect or log
@@ -208,7 +213,8 @@ export class FabulaUltimaActorSheet extends ActorSheet {
         // Iterate through items, allocating to containers
         for (let i of context.items) {
             i.img = i.img || DEFAULT_TOKEN;
-            
+            i.id = i._id;   // Make ID public
+
             let isTwoHanded = i.system.twoHanded;
             let isEquippedInMainHand  =   context.system.equipped.mainHand === i._id;
             let isEquippedInOffHand   =   context.system.equipped.offHand === i._id;
@@ -380,11 +386,7 @@ export class FabulaUltimaActorSheet extends ActorSheet {
         super.activateListeners(html);
         
         // Render the item sheet for viewing/editing prior to the editable check.
-        html.find('.item-edit').click(ev => {
-            const li = $(ev.currentTarget).parents(".item");
-            const item = this.actor.items.get(li.data("itemId"));
-            item.sheet.render(true);
-        });
+        html.find(".item-edit").click(this._onItemEdit.bind(this));
 
         // -------------------------------------------------------------
         // Everything below here is only needed if the sheet is editable
@@ -566,22 +568,35 @@ export class FabulaUltimaActorSheet extends ActorSheet {
     */
     async _onItemCreate(event) {
         event.preventDefault();
-        const header = event.currentTarget;
-        const type = header.dataset.type;
-        const data = duplicate(header.dataset);
-        const name = `New ${type.capitalize()}`;
+        const dataset = event.currentTarget.dataset;
+        const type = dataset.type;
+        const localizedType = game.i18n.localize(`TYPES.Item.${type}`);
+
         const itemData = {
             name: name,
             type: type,
-            data: data
+            system: foundry.utils.expandObject({ ...dataset }),
         };
-        // Remove the type from the dataset since it's in the itemData.type prop.
-        delete itemData.data["type"];
-        
-        // Finally, create the item!
-        return await Item.create(itemData, {parent: this.actor});
+        delete itemData.system.type;
+        return this.actor.createEmbeddedDocuments("Item", [itemData]);
     }
     
+
+    _onItemEdit(event) {
+        event.preventDefault();
+
+        const parent = $(event.currentTarget).parents(".item");
+
+        console.log(`Found parent item ${parent}`);
+
+        const itemID = parent.data("item-id");
+        const item = this.actor.items.get(itemID);
+
+        console.log(`Clicked to edit item ${itemID}`);
+
+        return item.sheet.render(true);
+    }
+
     /**
     * Handle clickable rolls.
     * @param {Event} event   The originating click event

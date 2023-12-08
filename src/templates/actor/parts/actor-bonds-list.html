@@ -1,0 +1,20 @@
+<div class="bonds flexrow">
+    <ol class="items-list bonds-list">
+        <li class="items-header flexrow">
+            <div class="item-name bond-name flexrow">{{ localize "FABULAULTIMA.Bond" }}</div>
+            <div class="item-detail bond-feelings flexrow">{{ localize "FABULAULTIMA.Feelings" }}</div>
+            {{#if owner}}
+            <div class="item-controls bond-controls flexrow">
+                <a class="item-control item-create bond-control flexrow" data-action="bondCreate" data-type="bond" data-tooltip="FABULAULTIMA.BondCreate">
+                    <i class="fas fa-plus"></i> {{ localize "FABULAULTIMA.Add" }}
+                </a>
+            </div>
+            {{/if}}
+        </li>
+        <ol class="item-list">
+            {{#each bonds as |bond iid|}}
+                {{> systems/fabulaultima/templates/item/parts/item-bond-line.html bond=bond editable=@root.editable user=@root.user owner=@root.owner }}
+            {{/each}}
+        </ol>
+    </ol>
+</div>

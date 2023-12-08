@@ -5,6 +5,8 @@
   "TYPES.Item.item": "Item",
   "TYPES.Item.bond": "Bond",
 
+  "FABULAULTIMA.ItemNew": "New {type}",
+
   "FABULAULTIMA.AttributeMight": "Might",
   "FABULAULTIMA.AttributeDexterity": "Dexterity",
   "FABULAULTIMA.AttributeInsight": "Insight",
@@ -20,7 +22,7 @@
   "FABULAULTIMA.EffectEdit": "Edit Effect",
   "FABULAULTIMA.EffectDelete": "Delete Effect",
 
-  "FABULAULTIMA.Add": "Aggiungi",
+  "FABULAULTIMA.Add": "Add",
   "FABULAULTIMA.LevelAbbr": "Level",
   "FABULAULTIMA.ExpAbbr": "XP",
   "FABULAULTIMA.NextLevel": "Next",
@@ -46,6 +48,7 @@
   "FABULAULTIMA.Origin": "Origin",
 
   "FABULAULTIMA.Bonds": "Bonds",
+  "FABULAULTIMA.Bond": "Bond",
   "FABULAULTIMA.Who": "Who",
   "FABULAULTIMA.Feelings": "Feelings",
   "FABULAULTIMA.AddBond": "Aggiungi Legame",

@@ -39,6 +39,15 @@
     padding: 0;
   }
 
+  .item-image {
+    flex: 0 0 3px;
+    height: 30px;
+    background-size: cover;
+    background-position: 50% 0;
+    border: none;
+    margin-right: 5px;
+  }
+
   // Item Name
   .item-name {
     flex: 2;
@@ -58,7 +67,7 @@
   // Control Buttons
   .item-controls {
     display: flex;
-    flex: 0 0 100px;
+    flex: 0 0 auto;
     justify-content: flex-end;
     a {
       font-size: 12px;

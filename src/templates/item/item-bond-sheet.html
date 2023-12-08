@@ -1,3 +1,16 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <p>This is a Bond sheet. Still in progress.</p>
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+    
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{!-- To render inline rolls in a TinyMCE editor, you need to pass the parent actor's (if any) roll data to the rollData prop. --}}
+            {{editor description target="description" rollData=rollData button=true owner=owner editable=editable}}
+        </div>
+    </section>
 </form>
