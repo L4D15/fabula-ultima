@@ -14,6 +14,7 @@ $progress-bar-background: rgba(0,0,0,0.1);
             display: flex;
             flex: 1 0 auto;
             align-self: center;
+            font-weight: bold;
         }
         
         .value-range {
@@ -23,11 +24,13 @@ $progress-bar-background: rgba(0,0,0,0.1);
             input {
                 margin-left: 1rem;
                 text-align: right;
+                font-weight: bold;
             }
             
             .max-value {
                 padding: 1px 3px;
                 align-self: center;
+                font-weight: bold;
             }
         }
     }
@@ -49,9 +52,25 @@ $progress-bar-background: rgba(0,0,0,0.1);
             border-radius: 3px;
             height: 8px;
         }
-        
+
         progress::-webkit-progress-value {
             background-color: #5b5398;
+        }
+    }
+}
+
+.health {
+    .progress-bar {
+        progress::-webkit-progress-value {
+            background-color: #ff1800;
+        }
+    }
+}
+
+.mind {
+    .progress-bar {
+        progress::-webkit-progress-value {
+            background-color: #0091d9;
         }
     }
 }
