@@ -14,13 +14,15 @@
 
 /* Styles limited to fabulaultima sheets */
 .fabulaultima {
-  &.sheet.actor {
-    @import 'sheets/character-sheet';
-  }
+    &.sheet {
+        &.actor {
+            @import 'sheets/character-sheet';
+        }
+    }
 
-  @import 'components/forms';
-  @import 'components/resource';
-  @import 'components/items';
-  @import 'components/effects';
-  @import 'partials/progress-bar';
+    @import 'components/forms';
+    @import 'components/resource';
+    @import 'components/items';
+    @import 'components/effects';
+    @import 'partials/progress-bar';
 }

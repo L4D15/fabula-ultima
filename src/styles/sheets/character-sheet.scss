@@ -1,22 +1,7 @@
-$border: 2px groove #eeede0;
-$main-font: "Signika", serif;
-$input-focus-border: 1px solid #000;
-$input-focus-background: rgba(0,0,0,0.1);
+@import "../variables.scss";
 
 .faded {
     color: #696969;
-}
-
-input.borderless {
-    border: 1px solid rgba(0,0,0,0);
-    background: none;
-}
-
-input.borderless:focus,
-input.borderless:hover {
-    border: $input-focus-border;
-    background: $input-focus-background;
-    box-shadow: none;
 }
 
 .justified-content {
@@ -24,21 +9,10 @@ input.borderless:hover {
     justify-content: space-between;
 }
 
-.sheet-header {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
-
 #info {
     flex-direction: row;
     display: flex;
-    
-    #avatar {
-        flex: 0 0 100px;
-        border-bottom: $border;
-    }
-    
+
     #bio {
         display: flex;
         flex: auto;
@@ -92,7 +66,6 @@ input.borderless:hover {
             flex: 1 1 auto;
             flex-direction: column;
             padding-left: 0.5rem;
-            border-bottom: $border;
 
             #leveling-values {
                 display: flex;
@@ -133,8 +106,8 @@ input.borderless:hover {
 .attributes {
     display: flex;
     flex-grow: 1;
-    border-bottom: $border;
     padding-bottom: 0.5rem;
+    border-bottom: $border;
 
     .attribute {
         display: flex;
