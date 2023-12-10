@@ -12,7 +12,6 @@ import { FabulaUltimaGroupRoll } from "./helpers/groupRoll/groupRoll.mjs";
 import { FabulaUltimaChatHelper } from "./helpers/chat.mjs";
 
 import '../styles/fabulaultima.scss';
-import FabulaUltimaBond from "./documents/bond.mjs";
 import { FabulaUltimaBondSheet } from "./sheets/bond-sheet.mjs";
 
 /* -------------------------------------------- */

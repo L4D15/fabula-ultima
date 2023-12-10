@@ -3,7 +3,7 @@
         <div class="item-image flexrow" role="button" aria-label="{{bond.name}}" style="background-image: url('{{bond.img}}')"></div>
         <h4>{{bond.name}}</h4>
     </div>
-    <div class="item-detail bond-feelings flexrow">Feelings go here...</div>
+    <div class="item-detail bond-feelings flexrow">{{ bond.system.feelings.listLabel }}</div>
     {{#if owner}}
     <div class="item-controls flexrow">
         <a class="item-control item-edit" data-action="itemEdit" data-tooltip="FABULAULTIMA.ItemEdit">

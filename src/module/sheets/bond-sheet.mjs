@@ -14,21 +14,12 @@ export class FabulaUltimaBondSheet extends ItemSheet {
         return `systems/fabulaultima/templates/item/item-bond-sheet.html`;
     }
 
-    _onFeelingSelectorChanged(event) {
-        // event.preventDefault();
+    /** override */
+    async getData() {
+        const context = super.getData();
 
-        // const parent = $(event.currentTarget).parents(".feeling");
-        // const groupID = parent.data("feeling-group");
-        // const value = event.target.value;
-        // let feelings = this.item.system.feelings;
-
-        // console.log(`Changed value of feeling ${groupID} to ${value}`);
-
-        // feelings[groupID] = value;
-
-        // this.item.update({
-        //     "system.feelings": feelings
-        // });
+        return context;
+    }
     
     activateListeners(html) {
         super.activateListeners(html);
