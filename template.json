@@ -256,8 +256,12 @@
         "inventoryBonus": 0
     },
     "bond": {
-        "target": "",
-        "feelings": []
+        "templates": ["base"],
+        "feelings": {
+            "group1": "-",
+            "group2": "-",
+            "group3": "-"
+        }
     },
     "baseAttack": {
         "templates": ["base"],

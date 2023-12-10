@@ -17,6 +17,14 @@
   "FABULAULTIMA.AttributeInsightShort": "INS",
   "FABULAULTIMA.AttributeWillpowerShort": "WLP",
 
+  "FABULAULTIMA.FeelingsNone": "-",
+  "FABULAULTIMA.FeelingsAdmiration": "Admiration",
+  "FABULAULTIMA.FeelingsInferiority": "Inferiority",
+  "FABULAULTIMA.FeelingsLoyalty": "Loyalty",
+  "FABULAULTIMA.FeelingsMistrust": "Mistrust",
+  "FABULAULTIMA.FeelingsAffection": "Affection",
+  "FABULAULTIMA.FeelingsHatred": "Hatred",
+
   "FABULAULTIMA.EffectCreate": "Create Effect",
   "FABULAULTIMA.EffectToggle": "Toggle Effect",
   "FABULAULTIMA.EffectEdit": "Edit Effect",

@@ -2,7 +2,7 @@
   "name": "fabulaultima",
   "title": "Fabula Ultima (Unofficial)",
   "description": "The Fabula Ultima system for FoundryVTT!",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "compatibility": {
     "minimum": "11",
     "verified": "11",

@@ -573,7 +573,7 @@ export class FabulaUltimaActorSheet extends ActorSheet {
         const localizedType = game.i18n.localize(`TYPES.Item.${type}`);
 
         const itemData = {
-            name: name,
+            name: game.i18n.format("FABULAULTIMA.ItemNew", {type: localizedType}),
             type: type,
             system: foundry.utils.expandObject({ ...dataset }),
         };

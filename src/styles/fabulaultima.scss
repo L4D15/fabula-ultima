@@ -18,6 +18,10 @@
         &.actor {
             @import 'sheets/character-sheet';
         }
+
+        &.bond {
+            @import 'sheets/bond-sheet';
+        }
     }
 
     @import 'components/forms';
