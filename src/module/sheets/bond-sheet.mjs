@@ -13,12 +13,6 @@ export class FabulaUltimaBondSheet extends ItemSheet {
     get template() {
         return `systems/fabulaultima/templates/item/item-bond-sheet.html`;
     }
-    
-    activateListeners(html) {
-        super.activateListeners(html);
-
-        html.find(".feeling-selector").change(this._onFeelingSelectorChanged.bind(this));
-    }
 
     _onFeelingSelectorChanged(event) {
         // event.preventDefault();
@@ -35,5 +29,8 @@ export class FabulaUltimaBondSheet extends ItemSheet {
         // this.item.update({
         //     "system.feelings": feelings
         // });
+    
+    activateListeners(html) {
+        super.activateListeners(html);
     }
 }
