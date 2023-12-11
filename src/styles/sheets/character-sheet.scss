@@ -12,7 +12,7 @@
 #info {
     flex-direction: row;
     display: flex;
-
+    
     #bio {
         display: flex;
         flex: auto;
@@ -27,14 +27,14 @@
             
             #name {
                 flex: 1 1 auto;
-
+                
                 input {
                     font-family: $main-font;
                     font-weight: 900;
                     font-size: 1.5rem;
                 }
             }
-
+            
             #identity {
                 font-family: $main-font;
             }
@@ -45,45 +45,45 @@
                 text-align: center;
                 font-family: $main-font;
                 border-left: $border;
-
+                
                 label {
                     font-size: 14px;
                     font-weight: bold;
                     text-transform: uppercase;
                     letter-spacing: 0px;
                 }
-
+                
                 input {
                     font-family: $main-font;
                     font-size: 1.2rem;
                 }
             }
-
+            
         }
-
+        
         #leveling {
             display: flex;
             flex: 1 1 auto;
             flex-direction: column;
             padding-left: 0.5rem;
-
+            
             #leveling-values {
                 display: flex;
                 flex: 1 0 auto;
                 flex-direction: row;
                 font-size: 1rem;
                 align-items: center;
-
+                
                 a {
                     padding-left: 8px;
                 }
             }
-
+            
             #leveling-bar {
                 display: flex;
                 flex: 1 0 auto;
             }
-
+            
             #xp-values {
                 display: flex;
                 flex-direction: row;
@@ -93,7 +93,7 @@
                 font-weight: bold;
                 font-size: 1rem;
             }
-
+            
             label {
                 font-family: $main-font;
                 font-weight: bold;
@@ -108,7 +108,7 @@
     flex-grow: 1;
     padding-bottom: 0.5rem;
     border-bottom: $border;
-
+    
     .attribute {
         display: flex;
         align-items: center;
@@ -117,34 +117,34 @@
         border-top: none;
         border-left: none;
         border-right: $border;
-
+        
         &:first-child {
             border-left: none;
         }
-
+        
         &:last-child {
             border-right: none;
         }
-
+        
         label {
             font-family: $main-font;
             font-weight: 900;
             font-size: 1.2rem;
         }
-
+        
         .final-value {
             font-size: 1.3rem;
             font-weight: bold;
-
+            
             &.positive {
                 color: green;
             }
-    
+            
             &.negative {
                 color: red;
             }
         }
-
+        
     }
 }
 
@@ -153,13 +153,13 @@
     padding: 0;
     border-bottom: $border;
     border-top: $border;
-
+    
     .stat {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
+        
         .stat-name {
             font-family: $main-font;
             font-variant-caps: small-caps;
@@ -173,7 +173,7 @@
             font-size: 1.15rem;
             margin-bottom: 0.2rem;
         }
-
+        
         &.defense {
             border-left: $border;
             border-right: $border;
@@ -183,8 +183,45 @@
 
 .bonds {
     .bonds-list {
+        
+        
+        
         .bond-feelings {
             flex-grow: 3;
+            color: $text-faded-color;
+        }
+        
+        
+    }
+}
+
+.items-list
+{
+    .items-header {
+        color: $text-faded-color;
+        
+        .item-name {
+            text-transform: uppercase;
+            color: $text-faded-color;
+        }
+    }
+
+    .item {
+        .item-name {
+            font-weight: bold;
+        }
+
+        .item-summary {
+            flex: 0 0 100%;
+            font-size: 12px;
+            line-height: 16px;
+            padding: 0.25em 0.5em;
+            color: #191813;
+            border-top: 1px solid #c9c7b8;
+        }
+
+        .item-controls {
+            color: $text-faded-color;
         }
     }
 }

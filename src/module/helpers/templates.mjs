@@ -17,5 +17,6 @@
       "systems/fabulaultima/templates/actor/parts/actor-bonds-list.html",
       "systems/fabulaultima/templates/partials/progress-bar.html",
       "systems/fabulaultima/templates/item/parts/item-bond-line.html",
+      "systems/fabulaultima/templates/item/parts/item-summary.html",
   ]);
 };

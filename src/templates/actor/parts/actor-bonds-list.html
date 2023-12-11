@@ -13,7 +13,7 @@
         </li>
         <ol class="item-list">
             {{#each bonds as |bond iid|}}
-                {{> systems/fabulaultima/templates/item/parts/item-bond-line.html bond=bond editable=@root.editable user=@root.user owner=@root.owner }}
+                {{> systems/fabulaultima/templates/item/parts/item-bond-line.html bond=bond item=bond editable=@root.editable user=@root.user owner=@root.owner }}
             {{/each}}
         </ol>
     </ol>

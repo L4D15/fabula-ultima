@@ -14,7 +14,11 @@
 
 /* Styles limited to fabulaultima sheets */
 .fabulaultima {
+    @import './variables';
+
     &.sheet {
+        font-family: $main-font;
+
         &.actor {
             @import 'sheets/character-sheet';
         }
