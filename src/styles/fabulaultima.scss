@@ -14,13 +14,23 @@
 
 /* Styles limited to fabulaultima sheets */
 .fabulaultima {
-  &.sheet.actor {
-    @import 'sheets/character-sheet';
-  }
+    @import './variables';
 
-  @import 'components/forms';
-  @import 'components/resource';
-  @import 'components/items';
-  @import 'components/effects';
-  @import 'partials/progress-bar';
+    &.sheet {
+        font-family: $main-font;
+
+        &.actor {
+            @import 'sheets/character-sheet';
+        }
+
+        &.bond {
+            @import 'sheets/bond-sheet';
+        }
+    }
+
+    @import 'components/forms';
+    @import 'components/resource';
+    @import 'components/items';
+    @import 'components/effects';
+    @import 'partials/progress-bar';
 }

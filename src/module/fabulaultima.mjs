@@ -12,87 +12,131 @@ import { FabulaUltimaGroupRoll } from "./helpers/groupRoll/groupRoll.mjs";
 import { FabulaUltimaChatHelper } from "./helpers/chat.mjs";
 
 import '../styles/fabulaultima.scss';
+import { FabulaUltimaBondSheet } from "./sheets/bond-sheet.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
 /* -------------------------------------------- */
 
 Hooks.once('init', async function() {
+    
+    // Add utility classes to the global game object so that they're more easily
+    // accessible in global contexts.
+    game.fabulaultima = {
+        FabulaUltimaActor,
+        FabulaUltimaItem,
+        rollItemMacro,
+        combatHud: new FabulaUltimaCombatHud()
+    };
+    
+    // Add custom constants for configuration.
+    CONFIG.FABULAULTIMA = FABULAULTIMA;
+    
+    /**
+    * Set an initiative formula for the system
+    * @type {String}
+    */
+    CONFIG.Combat.initiative = {
+        formula: "1d@abilities.dexterity.value + 1d@abilities.insight.value",
+        decimals: 2
+    };
+    
+    // Define custom Document classes
+    CONFIG.Actor.documentClass = FabulaUltimaActor;
+    CONFIG.Item.documentClass = FabulaUltimaItem;
+    
+    // Register sheet application classes
+    // Actor sheets
+    Actors.unregisterSheet("core", ActorSheet);
+    Actors.registerSheet("fabulaultima", FabulaUltimaActorSheet, {
+        types: ["character"],
+        makeDefault: true,
+        label: "FABULAULTIMA.SheetClassCharacter",
+    });
+    
+    Actors.registerSheet("fabulaultima", FabulaUltimaActorSheet, {
+        types: ["npc"],
+        makeDefault: true,
+        label: "FABULAULTIMA.SheetClassNPC",
+    });
+    
+    Actors.registerSheet("fabulaultima", FabulaUltimaActorSheet, {
+        types: ["villain"],
+        makeDefault: true,
+        label: "FABULAULTIMA.SheetClassVillain",
+    });
+    
+    // Item sheets
+    Items.unregisterSheet("core", ItemSheet);
+    // Items.registerSheet("fabulaultima", FabulaUltimaItemSheet, {
+    //     types: ["item"],
+    //     makeDefault: true,
+    //     label: "FABULAULTIMA.SheetClassItem"
+    // });
+    
+    // Items.registerSheet("fabulaultima", FabulaUltimaBondSheet, {
+    //     types: ["bond"],
+    //     makeDefault: true,
+    //     label: "FABULAULTIMA.SheetClassBond",
+    // });
 
-  // Add utility classes to the global game object so that they're more easily
-  // accessible in global contexts.
-  game.fabulaultima = {
-    FabulaUltimaActor,
-    FabulaUltimaItem,
-    rollItemMacro,
-    combatHud: new FabulaUltimaCombatHud()
-  };
+    DocumentSheetConfig.registerSheet(Item, "fabulaultima", FabulaUltimaItemSheet, {
+        types: ["item"],
+        makeDefault: true,
+        label: "FABULAULTIMA.SheetClassItem"
+    });
 
-  // Add custom constants for configuration.
-  CONFIG.FABULAULTIMA = FABULAULTIMA;
+    DocumentSheetConfig.registerSheet(Item, "fabulaultima", FabulaUltimaBondSheet, {
+        types: ["bond"],
+        makeDefault: true,
+        label: "FABULAULTIMA.SheetClassBond"
+    });
 
-  /**
-   * Set an initiative formula for the system
-   * @type {String}
-   */
-  CONFIG.Combat.initiative = {
-    formula: "1d@abilities.dex.value + 1d@abilities.int.value",
-    decimals: 2
-  };
-
-  // Define custom Document classes
-  CONFIG.Actor.documentClass = FabulaUltimaActor;
-  CONFIG.Item.documentClass = FabulaUltimaItem;
-
-  // Register sheet application classes
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("fabulaultima", FabulaUltimaActorSheet, { makeDefault: true });
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("fabulaultima", FabulaUltimaItemSheet, { makeDefault: true });
-
-  game.settings.register("fabulaultima", "usePeculiarities", {
-    name: "FABULAULTIMA.UsePeculiarities",
-    hint: "FABULAULTIMA.UsePeculiaritiesHint",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: true
-  });
-  game.settings.register("fabulaultima", "useLimits", {
-    name: "FABULAULTIMA.UseLimitBreaks",
-    hint: "FABULAULTIMA.UseLimitBreaksHint",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: false
-  });
-  game.settings.register("fabulaultima", "usePartnerLimits", {
-    name: "FABULAULTIMA.UsePartnerLimitBreaks",
-    hint: "FABULAULTIMA.UsePartnerLimitBreaksHint",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: false
-  });
-  game.settings.register("fabulaultima", "useCampActivities", {
-    name: "FABULAULTIMA.UseCampActivities",
-    hint: "FABULAULTIMA.UseCampActivitiesHint",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: false
-  });
-  game.settings.register("fabulaultima", "useHeroicStyles", {
-    name: "FABULAULTIMA.UseHeroicStyles",
-    hint: "FABULAULTIMA.UseHeroicStyles",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: false
-  });
-
-  // Preload Handlebars templates.
-  return preloadHandlebarsTemplates();
+    // Settings
+    
+    game.settings.register("fabulaultima", "usePeculiarities", {
+        name: "FABULAULTIMA.UsePeculiarities",
+        hint: "FABULAULTIMA.UsePeculiaritiesHint",
+        scope: "world",
+        config: true,
+        type: Boolean,
+        default: true
+    });
+    game.settings.register("fabulaultima", "useLimits", {
+        name: "FABULAULTIMA.UseLimitBreaks",
+        hint: "FABULAULTIMA.UseLimitBreaksHint",
+        scope: "world",
+        config: true,
+        type: Boolean,
+        default: false
+    });
+    game.settings.register("fabulaultima", "usePartnerLimits", {
+        name: "FABULAULTIMA.UsePartnerLimitBreaks",
+        hint: "FABULAULTIMA.UsePartnerLimitBreaksHint",
+        scope: "world",
+        config: true,
+        type: Boolean,
+        default: false
+    });
+    game.settings.register("fabulaultima", "useCampActivities", {
+        name: "FABULAULTIMA.UseCampActivities",
+        hint: "FABULAULTIMA.UseCampActivitiesHint",
+        scope: "world",
+        config: true,
+        type: Boolean,
+        default: false
+    });
+    game.settings.register("fabulaultima", "useHeroicStyles", {
+        name: "FABULAULTIMA.UseHeroicStyles",
+        hint: "FABULAULTIMA.UseHeroicStyles",
+        scope: "world",
+        config: true,
+        type: Boolean,
+        default: false
+    });
+    
+    // Preload Handlebars templates.
+    return preloadHandlebarsTemplates();
 });
 
 /* -------------------------------------------- */
@@ -101,22 +145,22 @@ Hooks.once('init', async function() {
 
 // If you need to add Handlebars helpers, here are a few useful examples:
 Handlebars.registerHelper('concat', function() {
-  var outStr = '';
-  for (var arg in arguments) {
-    if (typeof arguments[arg] != 'object') {
-      outStr += arguments[arg];
+    var outStr = '';
+    for (var arg in arguments) {
+        if (typeof arguments[arg] != 'object') {
+            outStr += arguments[arg];
+        }
     }
-  }
-  return outStr;
+    return outStr;
 });
 
 Handlebars.registerHelper('toLowerCase', function(str) {
-  return str.toLowerCase();
+    return str.toLowerCase();
 });
 
 Handlebars.registerHelper('option', function (value, label, selectedValue) {
-  var selectedProp = value == selectedValue ? 'selected="selected"' : '';
-  return new Handlebars.SafeString('<option value="' + value + '" ' + selectedProp + '>' + label + "</option>");
+    var selectedProp = value == selectedValue ? 'selected="selected"' : '';
+    return new Handlebars.SafeString('<option value="' + value + '" ' + selectedProp + '>' + label + "</option>");
 });
 
 /* -------------------------------------------- */
@@ -124,70 +168,70 @@ Handlebars.registerHelper('option', function (value, label, selectedValue) {
 /* -------------------------------------------- */
 
 Hooks.once("ready", async function() {
-  // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
-
-  if (game.combat)
+    // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
+    Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
+    
+    if (game.combat)
     game.fabulaultima.combatHud.addToScreen();
 });
 
 Hooks.once("socketlib.ready", () => {
-  console.log("Fabula Ultima | Ready");
-
-  FabulaUltimaGroupRoll.ready();
-  FabulaUltimaCombatHud.ready();
+    console.log("Fabula Ultima | Ready");
+    
+    FabulaUltimaGroupRoll.ready();
+    FabulaUltimaCombatHud.ready();
 });
 
 Hooks.on("createCombat", async function() {
-  game.fabulaultima.combatHud.addToScreen();
+    game.fabulaultima.combatHud.addToScreen();
 });
 
 Hooks.on("deleteCombat", async function () {
-  game.fabulaultima.combatHud.deleteFromScreen();
+    game.fabulaultima.combatHud.deleteFromScreen();
 });
 
 Hooks.on("createCombatant", async function () {
-  game.fabulaultima.combatHud.update();
+    game.fabulaultima.combatHud.update();
 });
 
 Hooks.on("deleteCombatant", async function () {
-  game.fabulaultima.combatHud.update();
+    game.fabulaultima.combatHud.update();
 });
 
 Hooks.on("updateActor", async function (actor) {
-  if (game.combat)
+    if (game.combat)
     game.fabulaultima.combatHud.update();
 });
 
 Hooks.on('getSceneControlButtons', async function (buttons) {
-  FabulaUltimaGroupRoll.getSceneControlButtons(buttons);
+    FabulaUltimaGroupRoll.getSceneControlButtons(buttons);
 });
 
 Hooks.on('renderChatMessage', async function (message, html, data) {
-  let button = html.find('button[data-action="fabula-reroll"]');
-  if (button)
-  {
-    button.click(function (e) {
-      e.preventDefault();
-      FabulaUltimaChatHelper.rerollWithFabulaPoint(message, html, data);
-    });
-  }
-
-  button = html.find('button[data-action="roll-freeAttackMain"]');
-  if (button)
-  {
-    button.click(function () {
-      FabulaUltimaChatHelper.rollFreeAttack(message, html, data, false);
-    });
-  }
-
-  button = html.find('button[data-action="roll-freeAttackOff"]');
-  if (button)
-  {
-    button.click(function () {
-      FabulaUltimaChatHelper.rollFreeAttack(message, html, data, true);
-    });
-  }
+    let button = html.find('button[data-action="fabula-reroll"]');
+    if (button)
+    {
+        button.click(function (e) {
+            e.preventDefault();
+            FabulaUltimaChatHelper.rerollWithFabulaPoint(message, html, data);
+        });
+    }
+    
+    button = html.find('button[data-action="roll-freeAttackMain"]');
+    if (button)
+    {
+        button.click(function () {
+            FabulaUltimaChatHelper.rollFreeAttack(message, html, data, false);
+        });
+    }
+    
+    button = html.find('button[data-action="roll-freeAttackOff"]');
+    if (button)
+    {
+        button.click(function () {
+            FabulaUltimaChatHelper.rollFreeAttack(message, html, data, true);
+        });
+    }
 });
 
 /* -------------------------------------------- */
@@ -195,47 +239,47 @@ Hooks.on('renderChatMessage', async function (message, html, data) {
 /* -------------------------------------------- */
 
 /**
- * Create a Macro from an Item drop.
- * Get an existing item macro if one exists, otherwise create a new one.
- * @param {Object} data     The dropped data
- * @param {number} slot     The hotbar slot to use
- * @returns {Promise}
- */
+* Create a Macro from an Item drop.
+* Get an existing item macro if one exists, otherwise create a new one.
+* @param {Object} data     The dropped data
+* @param {number} slot     The hotbar slot to use
+* @returns {Promise}
+*/
 async function createItemMacro(data, slot) {
-  if (data.type !== "Item") return;
-  if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
-  const item = data.data;
-
-  // Create the macro command
-  const command = `game.fabulaultima.rollItemMacro("${item.name}");`;
-  let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
-  if (!macro) {
-    macro = await Macro.create({
-      name: item.name,
-      type: "script",
-      img: item.img,
-      command: command,
-      flags: { "fabulaultima.itemMacro": true }
-    });
-  }
-  game.user.assignHotbarMacro(macro, slot);
-  return false;
+    if (data.type !== "Item") return;
+    if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
+    const item = data.data;
+    
+    // Create the macro command
+    const command = `game.fabulaultima.rollItemMacro("${item.name}");`;
+    let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
+    if (!macro) {
+        macro = await Macro.create({
+            name: item.name,
+            type: "script",
+            img: item.img,
+            command: command,
+            flags: { "fabulaultima.itemMacro": true }
+        });
+    }
+    game.user.assignHotbarMacro(macro, slot);
+    return false;
 }
 
 /**
- * Create a Macro from an Item drop.
- * Get an existing item macro if one exists, otherwise create a new one.
- * @param {string} itemName
- * @return {Promise}
- */
+* Create a Macro from an Item drop.
+* Get an existing item macro if one exists, otherwise create a new one.
+* @param {string} itemName
+* @return {Promise}
+*/
 function rollItemMacro(itemName) {
-  const speaker = ChatMessage.getSpeaker();
-  let actor;
-  if (speaker.token) actor = game.actors.tokens[speaker.token];
-  if (!actor) actor = game.actors.get(speaker.actor);
-  const item = actor ? actor.items.find(i => i.name === itemName) : null;
-  if (!item) return ui.notifications.warn(`Your controlled Actor does not have an item named ${itemName}`);
-
-  // Trigger the item roll
-  return item.roll();
+    const speaker = ChatMessage.getSpeaker();
+    let actor;
+    if (speaker.token) actor = game.actors.tokens[speaker.token];
+    if (!actor) actor = game.actors.get(speaker.actor);
+    const item = actor ? actor.items.find(i => i.name === itemName) : null;
+    if (!item) return ui.notifications.warn(`Your controlled Actor does not have an item named ${itemName}`);
+    
+    // Trigger the item roll
+    return item.roll();
 }

@@ -1,0 +1,29 @@
+.feelings {
+    flex: 0 0 auto;
+    margin-top: 0.5rem;
+    justify-content: space-between;
+
+    .feeling {
+        display: flex;
+        flex: 1 0 auto;
+
+        select {
+            display: flex;
+            flex: 1 0 auto;
+            margin: 0 0.5rem;
+
+        }
+        
+        &:first-child {
+            select {
+                margin-left: 0;
+            }
+        }
+    
+        &:last-child {
+            select {
+                margin-right: 0;
+            }
+        }
+    }
+}

@@ -1,4 +1,12 @@
 {
+  "TYPES.Actor.character": "Character",
+  "TYPES.Actor.npc": "NPC",
+  "TYPES.Actor.villain": "Villain",
+  "TYPES.Item.item": "Item",
+  "TYPES.Item.bond": "Bond",
+
+  "FABULAULTIMA.ItemNew": "New {type}",
+
   "FABULAULTIMA.AttributeMight": "Might",
   "FABULAULTIMA.AttributeDexterity": "Dexterity",
   "FABULAULTIMA.AttributeInsight": "Insight",
@@ -9,12 +17,20 @@
   "FABULAULTIMA.AttributeInsightShort": "INS",
   "FABULAULTIMA.AttributeWillpowerShort": "WLP",
 
+  "FABULAULTIMA.FeelingsNone": "-",
+  "FABULAULTIMA.FeelingsAdmiration": "Admiration",
+  "FABULAULTIMA.FeelingsInferiority": "Inferiority",
+  "FABULAULTIMA.FeelingsLoyalty": "Loyalty",
+  "FABULAULTIMA.FeelingsMistrust": "Mistrust",
+  "FABULAULTIMA.FeelingsAffection": "Affection",
+  "FABULAULTIMA.FeelingsHatred": "Hatred",
+
   "FABULAULTIMA.EffectCreate": "Create Effect",
   "FABULAULTIMA.EffectToggle": "Toggle Effect",
   "FABULAULTIMA.EffectEdit": "Edit Effect",
   "FABULAULTIMA.EffectDelete": "Delete Effect",
 
-  "FABULAULTIMA.Add": "Aggiungi",
+  "FABULAULTIMA.Add": "Add",
   "FABULAULTIMA.LevelAbbr": "Level",
   "FABULAULTIMA.ExpAbbr": "XP",
   "FABULAULTIMA.NextLevel": "Next",
@@ -40,6 +56,7 @@
   "FABULAULTIMA.Origin": "Origin",
 
   "FABULAULTIMA.Bonds": "Bonds",
+  "FABULAULTIMA.Bond": "Bond",
   "FABULAULTIMA.Who": "Who",
   "FABULAULTIMA.Feelings": "Feelings",
   "FABULAULTIMA.AddBond": "Aggiungi Legame",

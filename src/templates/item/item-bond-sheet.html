@@ -1,1 +1,51 @@
-<p>TODO</p>
+<form class="{{cssClass}} flexcol" autocomplete="off">
+    <header class="sheet-header">
+        <div id="info" class="flexrow">
+            <div id="avatar" class="small">
+                <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+            </div>
+            <div class="header-fields flexcol">
+                <div id="name" class="charname">
+                    <input class="borderless" name="name" type="text" value="{{item.name}}" placeholder="Name"/>
+                </div>
+                <div class="form-item-type">{{ localize "FABULAULTIMA.Bond" }}</div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="sheet-body flexcol">
+        {{!-- Description Tab --}}
+        <div class="feelings flexrow">
+            <div class="feeling" data-feeling-group="group1">
+                <select class="feeling-selector" name="system.feelings.group1">
+                    {{#select item.system.feelings.group1 }}
+                    <option value="-">{{ localize "FABULAULTIMA.FeelingsNone" }}</option>
+                    <option value="admiration">{{ localize "FABULAULTIMA.FeelingsAdmiration" }}</option>
+                    <option value="inferiority">{{ localize "FABULAULTIMA.FeelingsInferiority" }}</option>
+                    {{/select}}
+                </select>
+            </div>
+            <div class="feeling" data-feeling-group="group2">
+                <select class="feeling-selector" name="system.feelings.group2">
+                    {{#select item.system.feelings.group2 }}
+                    <option value="-">{{ localize "FABULAULTIMA.FeelingsNone" }}</option>
+                    <option value="loyalty">{{ localize "FABULAULTIMA.FeelingsLoyalty" }}</option>
+                    <option value="mistrust">{{ localize "FABULAULTIMA.FeelingsMistrust" }}</option>
+                    {{/select}}
+                </select>
+            </div>
+            <div class="feeling" data-feeling-group="group3">
+                <select class="feeling-selector" name="system.feelings.group3">
+                    {{#select item.system.feelings.group3 }}
+                    <option value="-">{{ localize "FABULAULTIMA.FeelingsNone" }}</option>
+                    <option value="affection">{{ localize "FABULAULTIMA.FeelingsAffection" }}</option>
+                    <option value="hatred">{{ localize "FABULAULTIMA.FeelingsHatred" }}</option>
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+        <div class="description flexcol">
+            {{editor item.system.description target="system.description" button=true owner=owner editable=editable engine="prosemirror" }}
+        </div>
+    </section>
+</form>
